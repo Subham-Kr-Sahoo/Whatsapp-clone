@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		910A2DCC2C97955B00C3EACA /* Whatsapp_CloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */; };
-		910A2DCE2C97955B00C3EACA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DCD2C97955B00C3EACA /* ContentView.swift */; };
 		910A2DD02C97955D00C3EACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910A2DCF2C97955D00C3EACA /* Assets.xcassets */; };
 		910A2DD32C97955D00C3EACA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910A2DD22C97955D00C3EACA /* Preview Assets.xcassets */; };
+		910A2DDA2C979B7100C3EACA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DD92C979B7000C3EACA /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		910A2DC82C97955B00C3EACA /* Whatsapp-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whatsapp-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whatsapp_CloneApp.swift; sourceTree = "<group>"; };
-		910A2DCD2C97955B00C3EACA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		910A2DCF2C97955D00C3EACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		910A2DD22C97955D00C3EACA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		910A2DD92C979B7000C3EACA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */,
-				910A2DCD2C97955B00C3EACA /* ContentView.swift */,
+				910A2DD92C979B7000C3EACA /* MainTabView.swift */,
 				910A2DCF2C97955D00C3EACA /* Assets.xcassets */,
 				910A2DD12C97955D00C3EACA /* Preview Content */,
 			);
@@ -137,8 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				910A2DCE2C97955B00C3EACA /* ContentView.swift in Sources */,
 				910A2DCC2C97955B00C3EACA /* Whatsapp_CloneApp.swift in Sources */,
+				910A2DDA2C979B7100C3EACA /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
