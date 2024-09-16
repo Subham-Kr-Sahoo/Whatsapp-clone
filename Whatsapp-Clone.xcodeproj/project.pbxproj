@@ -13,6 +13,7 @@
 		910A2DDA2C979B7100C3EACA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DD92C979B7000C3EACA /* MainTabView.swift */; };
 		910A2DDC2C982A2600C3EACA /* UpdatesTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DDB2C982A2600C3EACA /* UpdatesTabScreen.swift */; };
 		9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9602C983D95004531F8 /* CallTabScreen.swift */; };
+		9142F96E2C984D48004531F8 /* CommunityTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		910A2DD92C979B7000C3EACA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		910A2DDB2C982A2600C3EACA /* UpdatesTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTabScreen.swift; sourceTree = "<group>"; };
 		9142F9602C983D95004531F8 /* CallTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTabScreen.swift; sourceTree = "<group>"; };
+		9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTabScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +57,9 @@
 		910A2DCA2C97955B00C3EACA /* Whatsapp-Clone */ = {
 			isa = PBXGroup;
 			children = (
+				9142F9622C984C11004531F8 /* Screens */,
 				910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */,
 				910A2DD92C979B7000C3EACA /* MainTabView.swift */,
-				910A2DDB2C982A2600C3EACA /* UpdatesTabScreen.swift */,
-				9142F9602C983D95004531F8 /* CallTabScreen.swift */,
 				910A2DCF2C97955D00C3EACA /* Assets.xcassets */,
 				910A2DD12C97955D00C3EACA /* Preview Content */,
 			);
@@ -71,6 +72,80 @@
 				910A2DD22C97955D00C3EACA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9142F9622C984C11004531F8 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9142F96B2C984D13004531F8 /* Settings */,
+				9142F96A2C984D0C004531F8 /* Chats */,
+				9142F9692C984CF1004531F8 /* Communities */,
+				9142F9662C984CB6004531F8 /* Calls */,
+				9142F9632C984C2F004531F8 /* Updates */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		9142F9632C984C2F004531F8 /* Updates */ = {
+			isa = PBXGroup;
+			children = (
+				9142F9642C984C5B004531F8 /* Views */,
+			);
+			path = Updates;
+			sourceTree = "<group>";
+		};
+		9142F9642C984C5B004531F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				910A2DDB2C982A2600C3EACA /* UpdatesTabScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9142F9662C984CB6004531F8 /* Calls */ = {
+			isa = PBXGroup;
+			children = (
+				9142F9672C984CC0004531F8 /* Views */,
+			);
+			path = Calls;
+			sourceTree = "<group>";
+		};
+		9142F9672C984CC0004531F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9142F9602C983D95004531F8 /* CallTabScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9142F9692C984CF1004531F8 /* Communities */ = {
+			isa = PBXGroup;
+			children = (
+				9142F96C2C984D21004531F8 /* Views */,
+			);
+			path = Communities;
+			sourceTree = "<group>";
+		};
+		9142F96A2C984D0C004531F8 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		9142F96B2C984D13004531F8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9142F96C2C984D21004531F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +220,7 @@
 			files = (
 				910A2DDC2C982A2600C3EACA /* UpdatesTabScreen.swift in Sources */,
 				9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */,
+				9142F96E2C984D48004531F8 /* CommunityTabScreen.swift in Sources */,
 				910A2DCC2C97955B00C3EACA /* Whatsapp_CloneApp.swift in Sources */,
 				910A2DDA2C979B7100C3EACA /* MainTabView.swift in Sources */,
 			);
