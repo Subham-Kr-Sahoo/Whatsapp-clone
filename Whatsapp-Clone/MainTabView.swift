@@ -33,7 +33,7 @@ struct MainTabView: View {
                     Image(systemName: Tab.chats.icon)
                     Text(Tab.chats.title)
                 }
-            placeholderItemView("settings")
+            SettingsTabScreen()
                 .tabItem {
                     Image(systemName: Tab.settings.icon)
                     Text(Tab.settings.title)
@@ -49,23 +49,6 @@ struct MainTabView: View {
 }
 
 extension MainTabView{
-    // this i created just because to make the code clean
-    // this is just till i adds the pages to those tab buttons 
-    private func placeholderItemView(_ title: String) -> some View {
-        ScrollView {
-            VStack{
-                ForEach(1..<50){_ in 
-                    ZStack {
-                        Text(title)
-                            .bold()
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 120)
-                            .background(Color.green)
-                    }
-                }
-            }
-        }
-    }
     
     private enum Tab : String {
         case updates,calls,communities,chats,settings
