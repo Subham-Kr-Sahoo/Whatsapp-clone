@@ -20,6 +20,8 @@ struct CallTabScreen: View {
                     ForEach(0..<15){_ in
                         recentCallItems()
                     }
+                    inboxFooterView()
+                        .listRowSeparator(.hidden)
                 }header: {
                     Text("Recents")
                         .font(.headline)
@@ -74,6 +76,20 @@ extension CallTabScreen {
         var id: String {
             return rawValue
         }
+    }
+    private func inboxFooterView() -> some View {
+        HStack{
+            Image(systemName: "lock.fill")
+            (
+            Text("Your calls are ")
+            +
+            Text("end-to-end encrypted")
+                .foregroundStyle(.blue)
+            )
+        }
+        .foregroundStyle(.gray)
+        .font(.caption)
+        .padding(.horizontal,40)
     }
 }
 
