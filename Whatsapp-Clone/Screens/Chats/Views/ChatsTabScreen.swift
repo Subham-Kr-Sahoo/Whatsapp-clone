@@ -20,7 +20,11 @@ struct ChatsTabScreen: View {
             List{
                 archivedButton()
                 ForEach(0..<12){_ in
-                    ChatsItemView()
+                    NavigationLink{
+                        ChatRoomScreen()
+                    } label: {
+                        ChatsItemView()
+                    }
                 }
                 inboxFooterView()
                     .listRowSeparator(.hidden)
