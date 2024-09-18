@@ -28,6 +28,7 @@
 		9142F98E2C9A2D40004531F8 /* BubbleTailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F98D2C9A2D40004531F8 /* BubbleTailView.swift */; };
 		9142F9912C9A2EAE004531F8 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9902C9A2EAE004531F8 /* CustomModifiers.swift */; };
 		9142F9932C9A4116004531F8 /* BubbleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9922C9A4116004531F8 /* BubbleImageView.swift */; };
+		9142F9B12C9B4C87004531F8 /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9B02C9B4C87004531F8 /* BubbleAudioView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		9142F98D2C9A2D40004531F8 /* BubbleTailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTailView.swift; sourceTree = "<group>"; };
 		9142F9902C9A2EAE004531F8 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		9142F9922C9A4116004531F8 /* BubbleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageView.swift; sourceTree = "<group>"; };
+		9142F9B02C9B4C87004531F8 /* BubbleAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAudioView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +89,8 @@
 			children = (
 				9142F98F2C9A2E98004531F8 /* Helpers */,
 				9142F9622C984C11004531F8 /* Screens */,
-				910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */,
 				910A2DD92C979B7000C3EACA /* MainTabView.swift */,
+				910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */,
 				910A2DCF2C97955D00C3EACA /* Assets.xcassets */,
 				910A2DD12C97955D00C3EACA /* Preview Content */,
 			);
@@ -222,6 +224,7 @@
 				9142F9802C99D527004531F8 /* ChatRoomScreen.swift */,
 				9142F9842C99F5A2004531F8 /* MessageListController.swift */,
 				9142F9822C99DF40004531F8 /* TextInputArea.swift */,
+				9142F9B02C9B4C87004531F8 /* BubbleAudioView.swift */,
 				9142F9862C99F9DB004531F8 /* MessageListView.swift */,
 				9142F98B2C9A2CC6004531F8 /* BubbleTextView.swift */,
 				9142F9922C9A4116004531F8 /* BubbleImageView.swift */,
@@ -333,6 +336,7 @@
 				9142F9782C98BA6D004531F8 /* SettingsItemView.swift in Sources */,
 				910A2DCC2C97955B00C3EACA /* Whatsapp_CloneApp.swift in Sources */,
 				9142F9912C9A2EAE004531F8 /* CustomModifiers.swift in Sources */,
+				9142F9B12C9B4C87004531F8 /* BubbleAudioView.swift in Sources */,
 				910A2DDA2C979B7100C3EACA /* MainTabView.swift in Sources */,
 				9142F97B2C98CCE8004531F8 /* SettingsItem.swift in Sources */,
 			);
