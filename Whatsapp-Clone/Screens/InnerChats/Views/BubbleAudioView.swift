@@ -20,7 +20,7 @@ struct BubbleAudioView: View {
                 Text("03:58")
                     .foregroundStyle(.gray)
             }
-            .padding(20)
+            .padding(8)
             .background(Color.gray.opacity(0.2))
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             .padding(8)
