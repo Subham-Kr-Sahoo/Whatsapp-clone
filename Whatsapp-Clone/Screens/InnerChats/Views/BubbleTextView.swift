@@ -11,10 +11,10 @@ struct BubbleTextView: View {
     let item : MessageItems
     var body: some View {
         VStack(alignment:item.horizontalAlignment,spacing:3){
-            Text("Hello world how are you my name is subham kumar sahoo and i am currently creayting a messaheib app")
+            Text("Hello world how are you my name is subham kumar sahoo and i am currently creating a messaging app")
                 .padding(10)
                 .background(item.backgroundColor)
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .applyTail(item.direction)
             timeStampTextView()
         }

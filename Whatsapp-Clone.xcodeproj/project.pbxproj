@@ -27,6 +27,7 @@
 		9142F98C2C9A2CC6004531F8 /* BubbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F98B2C9A2CC6004531F8 /* BubbleTextView.swift */; };
 		9142F98E2C9A2D40004531F8 /* BubbleTailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F98D2C9A2D40004531F8 /* BubbleTailView.swift */; };
 		9142F9912C9A2EAE004531F8 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9902C9A2EAE004531F8 /* CustomModifiers.swift */; };
+		9142F9932C9A4116004531F8 /* BubbleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9922C9A4116004531F8 /* BubbleImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		9142F98B2C9A2CC6004531F8 /* BubbleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
 		9142F98D2C9A2D40004531F8 /* BubbleTailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTailView.swift; sourceTree = "<group>"; };
 		9142F9902C9A2EAE004531F8 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
+		9142F9922C9A4116004531F8 /* BubbleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				9142F9822C99DF40004531F8 /* TextInputArea.swift */,
 				9142F9862C99F9DB004531F8 /* MessageListView.swift */,
 				9142F98B2C9A2CC6004531F8 /* BubbleTextView.swift */,
+				9142F9922C9A4116004531F8 /* BubbleImageView.swift */,
 				9142F98D2C9A2D40004531F8 /* BubbleTailView.swift */,
 			);
 			path = Views;
@@ -322,6 +325,7 @@
 				9142F98E2C9A2D40004531F8 /* BubbleTailView.swift in Sources */,
 				9142F9832C99DF40004531F8 /* TextInputArea.swift in Sources */,
 				9142F96E2C984D48004531F8 /* CommunityTabScreen.swift in Sources */,
+				9142F9932C9A4116004531F8 /* BubbleImageView.swift in Sources */,
 				9142F9712C989ED4004531F8 /* ChatsTabScreen.swift in Sources */,
 				9142F9872C99F9DB004531F8 /* MessageListView.swift in Sources */,
 				9142F9812C99D527004531F8 /* ChatRoomScreen.swift in Sources */,
