@@ -29,11 +29,13 @@
 		9142F9912C9A2EAE004531F8 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9902C9A2EAE004531F8 /* CustomModifiers.swift */; };
 		9142F9932C9A4116004531F8 /* BubbleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9922C9A4116004531F8 /* BubbleImageView.swift */; };
 		9142F9B12C9B4C87004531F8 /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9B02C9B4C87004531F8 /* BubbleAudioView.swift */; };
+		9152A30F2C9DA21C00B778AA /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A30E2C9DA21C00B778AA /* AuthHeaderView.swift */; };
 		917B6AF52C9B92F2009BE3E2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF42C9B92F2009BE3E2 /* FirebaseAuth */; };
 		917B6AF72C9B92F2009BE3E2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF62C9B92F2009BE3E2 /* FirebaseDatabase */; };
 		917B6AF92C9B92F2009BE3E2 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF82C9B92F2009BE3E2 /* FirebaseMessaging */; };
 		917B6AFB2C9B92F2009BE3E2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AFA2C9B92F2009BE3E2 /* FirebaseStorage */; };
 		917B6AFD2C9B94F1009BE3E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */; };
+		917B6B032C9D9C76009BE3E2 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +62,9 @@
 		9142F9902C9A2EAE004531F8 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		9142F9922C9A4116004531F8 /* BubbleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageView.swift; sourceTree = "<group>"; };
 		9142F9B02C9B4C87004531F8 /* BubbleAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAudioView.swift; sourceTree = "<group>"; };
+		9152A30E2C9DA21C00B778AA /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 		9142F9622C984C11004531F8 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				917B6AFE2C9D9C15009BE3E2 /* Auth */,
 				9142F97C2C98DC64004531F8 /* InnerChats */,
 				9142F96B2C984D13004531F8 /* Settings */,
 				9142F96A2C984D0C004531F8 /* Chats */,
@@ -260,6 +265,23 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		917B6AFE2C9D9C15009BE3E2 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				917B6AFF2C9D9C21009BE3E2 /* Views */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		917B6AFF2C9D9C21009BE3E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */,
+				9152A30E2C9DA21C00B778AA /* AuthHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -337,6 +359,7 @@
 				910A2DDC2C982A2600C3EACA /* UpdatesTabScreen.swift in Sources */,
 				9142F98A2C9A2C20004531F8 /* MessageItems.swift in Sources */,
 				9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */,
+				9152A30F2C9DA21C00B778AA /* AuthHeaderView.swift in Sources */,
 				9142F9762C98B9D8004531F8 /* SettingsTabScreen.swift in Sources */,
 				9142F9732C98A3B0004531F8 /* ChatsItemView.swift in Sources */,
 				9142F9852C99F5A2004531F8 /* MessageListController.swift in Sources */,
@@ -345,6 +368,7 @@
 				9142F96E2C984D48004531F8 /* CommunityTabScreen.swift in Sources */,
 				9142F9932C9A4116004531F8 /* BubbleImageView.swift in Sources */,
 				9142F9712C989ED4004531F8 /* ChatsTabScreen.swift in Sources */,
+				917B6B032C9D9C76009BE3E2 /* LoginScreen.swift in Sources */,
 				9142F9872C99F9DB004531F8 /* MessageListView.swift in Sources */,
 				9142F9812C99D527004531F8 /* ChatRoomScreen.swift in Sources */,
 				9142F98C2C9A2CC6004531F8 /* BubbleTextView.swift in Sources */,
