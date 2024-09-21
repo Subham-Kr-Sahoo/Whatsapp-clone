@@ -34,6 +34,7 @@
 		9152A3132C9E21C700B778AA /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A3122C9E21C700B778AA /* AuthButton.swift */; };
 		9152A3152C9E267600B778AA /* SignupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A3142C9E267600B778AA /* SignupScreen.swift */; };
 		9152A3182C9E2C2900B778AA /* AuthScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A3172C9E2C2900B778AA /* AuthScreenModel.swift */; };
+		9152A31A2C9E332C00B778AA /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A3192C9E332C00B778AA /* AuthProvider.swift */; };
 		917B6AF52C9B92F2009BE3E2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF42C9B92F2009BE3E2 /* FirebaseAuth */; };
 		917B6AF72C9B92F2009BE3E2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF62C9B92F2009BE3E2 /* FirebaseDatabase */; };
 		917B6AF92C9B92F2009BE3E2 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF82C9B92F2009BE3E2 /* FirebaseMessaging */; };
@@ -71,6 +72,7 @@
 		9152A3122C9E21C700B778AA /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		9152A3142C9E267600B778AA /* SignupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreen.swift; sourceTree = "<group>"; };
 		9152A3172C9E2C2900B778AA /* AuthScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenModel.swift; sourceTree = "<group>"; };
+		9152A3192C9E332C00B778AA /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,9 +283,18 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		9152A31B2C9E351300B778AA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9152A3192C9E332C00B778AA /* AuthProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		917B6AFE2C9D9C15009BE3E2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				9152A31B2C9E351300B778AA /* Services */,
 				9152A3162C9E2C1400B778AA /* ViewModels */,
 				917B6AFF2C9D9C21009BE3E2 /* Views */,
 			);
@@ -382,6 +393,7 @@
 				9142F98A2C9A2C20004531F8 /* MessageItems.swift in Sources */,
 				9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */,
 				9152A30F2C9DA21C00B778AA /* AuthHeaderView.swift in Sources */,
+				9152A31A2C9E332C00B778AA /* AuthProvider.swift in Sources */,
 				9142F9762C98B9D8004531F8 /* SettingsTabScreen.swift in Sources */,
 				9142F9732C98A3B0004531F8 /* ChatsItemView.swift in Sources */,
 				9142F9852C99F5A2004531F8 /* MessageListController.swift in Sources */,

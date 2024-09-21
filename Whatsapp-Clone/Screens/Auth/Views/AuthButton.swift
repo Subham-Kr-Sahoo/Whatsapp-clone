@@ -19,7 +19,7 @@ struct AuthButton: View {
     }
     var body: some View {
         Button{
-            
+            onTap()
         }label:{
             HStack{
                 Text(title)

@@ -15,10 +15,11 @@ struct SignupScreen: View {
             Spacer()
             AuthHeaderView()
             AuthTextField(type: .email, text: $authScreenModel.email)
+                .autocapitalization(.none)
             AuthTextField(type: .custom("Username", "at"), text: $authScreenModel.userName)
             AuthTextField(type: .password, text: $authScreenModel.password)
             AuthButton(title: "Create an Account") {
-                
+                Task { await authScreenModel.signup() }
             }
             .disabled(authScreenModel.disableSignupButton)
             Spacer()
