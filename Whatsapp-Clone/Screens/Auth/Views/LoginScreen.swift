@@ -28,6 +28,12 @@ struct LoginScreen: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.green.gradient.opacity(0.8))
             .ignoresSafeArea()
+            .alert(isPresented: $authScreenModel.errorState.showError) {
+                Alert(
+                    title: Text(authScreenModel.errorState.errorMessage),
+                    dismissButton: .default(Text("OK"))
+                    )
+            }
         }
     }
     private func forgotPasswordButton() -> some View {

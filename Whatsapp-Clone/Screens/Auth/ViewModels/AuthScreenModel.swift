@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class AuthScreenModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
