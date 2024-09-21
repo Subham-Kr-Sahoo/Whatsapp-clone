@@ -32,6 +32,26 @@ struct SettingsTabScreen: View {
             }
             .navigationTitle("Settings")
             .searchable(text: $searchText)
+            .toolbar {
+                leadingNavItems()
+            }
+        }
+    }
+}
+
+extension SettingsTabScreen {
+    @ToolbarContentBuilder
+    private func leadingNavItems() -> some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) {
+            Button{
+                Task {
+                    try await AuthManager.shared.logOut()
+                }
+            }label: {
+                Text("Sign Out")
+                    .foregroundStyle(.pink)
+                    .fontWeight(.semibold)
+            }
         }
     }
 }

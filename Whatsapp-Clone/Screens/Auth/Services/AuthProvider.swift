@@ -47,7 +47,7 @@ final class AuthManager : AuthProvider {
     static let shared: AuthProvider = AuthManager()
     
     var authState = CurrentValueSubject<AuthState, Never>(.pending)
-    
+    //MARK: AUTO LOGIN
     func autoLogin() async {
         if Auth.auth().currentUser == nil {
             authState.send(.loggedOut)
@@ -55,11 +55,11 @@ final class AuthManager : AuthProvider {
             Task { await fetchUserInfo() }
         }
     }
-    
+    //MARK: LOGIN
     func login(with email: String, and password: String) async throws {
         
     }
-    
+    //MARK: CREATE AN ACCOUNT
     func createAccount(for username: String, with email: String, and password: String) async throws {
         do{
             let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
@@ -72,24 +72,32 @@ final class AuthManager : AuthProvider {
             throw authError.accounCreationError(error.localizedDescription)
         }
     }
-    
+    //MARK: USER LOGOUT
     func logOut() async throws {
-        
+        do{
+            try Auth.auth().signOut()
+            authState.send(.loggedOut)
+            print("Successfully logged out")
+        }catch{
+            print("failed to log out : \(error.localizedDescription)")
+        }
     }
 }
 extension AuthManager {
+    //MARK: STORING IT TO IN DB
     private func saveUserIntoDB(user:UserItems) async throws {
         do{
-            let userDictionary = ["uid":user.uid,"username":user.username,"email":user.email]
-            try await Database.database().reference().child("users").child(user.uid).setValue(userDictionary)
+            let userDictionary : [String:Any] = [.uid:user.uid,.username:user.username,.email:user.email]
+            try await FirebaseConstants.userRef.child(user.uid).setValue(userDictionary)
         }catch{
             print("Failed to Save user info to the Database : \(error.localizedDescription)")
             throw authError.failedtoSaveUserInfo(error.localizedDescription)
         }
     }
+    //MARK: RETRIVING THE USER INFO FROM DB
     private func fetchUserInfo() async {
         guard let currentID = Auth.auth().currentUser?.uid else { return }
-        Database.database().reference().child("users").child(currentID).observe(.value) {[weak self]DataSnapshot in
+        FirebaseConstants.userRef.child(currentID).observe(.value) {[weak self]DataSnapshot in
             guard let userDict = DataSnapshot.value as? [String:Any] else { return }
             let user = UserItems(dictionary: userDict)
             self?.authState.send(.loggedIn(user))
@@ -100,34 +108,3 @@ extension AuthManager {
     }
 }
 
-struct UserItems : Identifiable,Hashable,Decodable {
-    let uid : String
-    let username : String
-    let email : String
-    var bio : String? = nil
-    var profileImageUrl : String? = nil
-    var id : String {
-        return uid
-    }
-    var bioUnwrapped : String {
-        return bio ?? "Hey there! I am using WhatsApp"
-    }
-}
-
-extension UserItems {
-    init(dictionary:[String:Any]){
-        self.uid = dictionary[.uid] as? String ?? ""
-        self.username = dictionary[.username] as? String ?? ""
-        self.email = dictionary[.email] as? String ?? ""
-        self.bio = dictionary[.bio] as? String ?? nil
-        self.profileImageUrl = dictionary[.profileImageUrl] as? String ?? nil
-    }
-}
-
-extension String {
-    static let uid = "uid"
-    static let username = "username"
-    static let email = "email"
-    static let bio = "bio"
-    static let profileImageUrl = "profileImageUrl"
-}
