@@ -15,10 +15,11 @@ struct LoginScreen: View {
                 Spacer()
                 AuthHeaderView()
                 AuthTextField(type: .email, text: $authScreenModel.email)
+                    .autocapitalization(.none)
                 AuthTextField(type: .password, text: $authScreenModel.password)
                 forgotPasswordButton()
                 AuthButton(title: "Login") {
-                    
+                    Task{ await authScreenModel.login() }
                 }
                 .disabled(authScreenModel.disableLoginButton)
                 Spacer()

@@ -15,7 +15,7 @@ struct RoutesView: View {
             ProgressView()
                 .controlSize(.large)
         case .loggedIn(let loggedInUser):
-            MainTabView()
+            MainTabView(loggedInUser)
         case .loggedOut :
             LoginScreen()
         }
