@@ -10,12 +10,16 @@ import SwiftUI
 struct NewMemberAddScreen: View {
     @State private var searchText = ""
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel = ChatPartnerPickerViewModel()
     var body: some View {
-        NavigationStack{
+        NavigationStack(path:$viewModel.navStack){
             List{
-                ForEach(chatOptions.allCases){item in
-                    HeaderView(item: item)
-                }
+                HeaderView(item: .newGroup)
+                    .onTapGesture {
+                        viewModel.navStack.append(.addGroupChatMembers)
+                    }
+                HeaderView(item: .newContact)
+                HeaderView(item: .newCommuity)
                 Section{
                     ForEach(1..<18) {_ in
                         ChatOptionsFromContactsView(user: .placeholder)
@@ -26,8 +30,12 @@ struct NewMemberAddScreen: View {
                         .bold()
                 }
             }
-            .searchable(text: $searchText,prompt: "Search Name or Number")
+            .padding(.top,-20)
+            .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .always),prompt: "Search Name or Number")
             .navigationTitle("New Chat")
+            .navigationDestination(for: chatCreationRoute.self, destination: { Route in
+                destinationView(for: Route)
+            })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 trailingNavItems()
@@ -35,6 +43,18 @@ struct NewMemberAddScreen: View {
         }
     }
 }
+extension NewMemberAddScreen {
+    @ViewBuilder
+    private func destinationView(for route: chatCreationRoute) -> some View {
+        switch route {
+        case .addGroupChatMembers:
+            AddMemberstoGroupChat(viewModel: viewModel)
+        case .setUpGroupChat:
+            NewGroupSetupView(viewModel: viewModel)
+        }
+    }
+}
+
 extension NewMemberAddScreen {
     @ToolbarContentBuilder
     private func trailingNavItems() -> some ToolbarContent {

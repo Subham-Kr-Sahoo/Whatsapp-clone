@@ -41,6 +41,10 @@
 		9152A3292C9F138600B778AA /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A3282C9F138600B778AA /* FirebaseConstants.swift */; };
 		9152A32B2C9F252F00B778AA /* NewMemberAddScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A32A2C9F252F00B778AA /* NewMemberAddScreen.swift */; };
 		9152A32D2C9F286D00B778AA /* ChatOptionsFromContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A32C2C9F286D00B778AA /* ChatOptionsFromContactsView.swift */; };
+		9152A3302CA0524600B778AA /* ChatPartnerPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A32F2CA0524600B778AA /* ChatPartnerPickerViewModel.swift */; };
+		9152A3342CA0547C00B778AA /* AddMemberstoGroupChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A3332CA0547C00B778AA /* AddMemberstoGroupChat.swift */; };
+		9165D0C62CA05ED40054422E /* SelectedChatPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165D0C52CA05ED40054422E /* SelectedChatPartnerView.swift */; };
+		9165D0C82CA06EF10054422E /* NewGroupSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9165D0C72CA06EF10054422E /* NewGroupSetupView.swift */; };
 		917B6AF52C9B92F2009BE3E2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF42C9B92F2009BE3E2 /* FirebaseAuth */; };
 		917B6AF72C9B92F2009BE3E2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF62C9B92F2009BE3E2 /* FirebaseDatabase */; };
 		917B6AF92C9B92F2009BE3E2 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF82C9B92F2009BE3E2 /* FirebaseMessaging */; };
@@ -85,6 +89,10 @@
 		9152A3282C9F138600B778AA /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		9152A32A2C9F252F00B778AA /* NewMemberAddScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemberAddScreen.swift; sourceTree = "<group>"; };
 		9152A32C2C9F286D00B778AA /* ChatOptionsFromContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOptionsFromContactsView.swift; sourceTree = "<group>"; };
+		9152A32F2CA0524600B778AA /* ChatPartnerPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPartnerPickerViewModel.swift; sourceTree = "<group>"; };
+		9152A3332CA0547C00B778AA /* AddMemberstoGroupChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberstoGroupChat.swift; sourceTree = "<group>"; };
+		9165D0C52CA05ED40054422E /* SelectedChatPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedChatPartnerView.swift; sourceTree = "<group>"; };
+		9165D0C72CA06EF10054422E /* NewGroupSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupSetupView.swift; sourceTree = "<group>"; };
 		917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +209,7 @@
 		9142F96A2C984D0C004531F8 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				9152A32E2CA051F700B778AA /* ViewModel */,
 				9142F96F2C989EBB004531F8 /* Views */,
 			);
 			path = Chats;
@@ -230,6 +239,9 @@
 				9142F9702C989ED4004531F8 /* ChatsTabScreen.swift */,
 				9152A32A2C9F252F00B778AA /* NewMemberAddScreen.swift */,
 				9152A32C2C9F286D00B778AA /* ChatOptionsFromContactsView.swift */,
+				9165D0C72CA06EF10054422E /* NewGroupSetupView.swift */,
+				9152A3332CA0547C00B778AA /* AddMemberstoGroupChat.swift */,
+				9165D0C52CA05ED40054422E /* SelectedChatPartnerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,6 +360,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		9152A32E2CA051F700B778AA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9152A32F2CA0524600B778AA /* ChatPartnerPickerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		917B6AFE2C9D9C15009BE3E2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,12 +469,15 @@
 				9152A3182C9E2C2900B778AA /* AuthScreenModel.swift in Sources */,
 				9152A3132C9E21C700B778AA /* AuthButton.swift in Sources */,
 				9142F98A2C9A2C20004531F8 /* MessageItems.swift in Sources */,
+				9152A3342CA0547C00B778AA /* AddMemberstoGroupChat.swift in Sources */,
 				9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */,
 				9152A30F2C9DA21C00B778AA /* AuthHeaderView.swift in Sources */,
 				9152A31A2C9E332C00B778AA /* AuthProvider.swift in Sources */,
+				9165D0C62CA05ED40054422E /* SelectedChatPartnerView.swift in Sources */,
 				9142F9762C98B9D8004531F8 /* SettingsTabScreen.swift in Sources */,
 				9152A3292C9F138600B778AA /* FirebaseConstants.swift in Sources */,
 				9152A32D2C9F286D00B778AA /* ChatOptionsFromContactsView.swift in Sources */,
+				9165D0C82CA06EF10054422E /* NewGroupSetupView.swift in Sources */,
 				9142F9732C98A3B0004531F8 /* ChatsItemView.swift in Sources */,
 				9142F9852C99F5A2004531F8 /* MessageListController.swift in Sources */,
 				9152A3222C9E52C000B778AA /* RouteScreenModel.swift in Sources */,
@@ -477,6 +500,7 @@
 				9142F9B12C9B4C87004531F8 /* BubbleAudioView.swift in Sources */,
 				910A2DDA2C979B7100C3EACA /* MainTabView.swift in Sources */,
 				9152A32B2C9F252F00B778AA /* NewMemberAddScreen.swift in Sources */,
+				9152A3302CA0524600B778AA /* ChatPartnerPickerViewModel.swift in Sources */,
 				9142F97B2C98CCE8004531F8 /* SettingsItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

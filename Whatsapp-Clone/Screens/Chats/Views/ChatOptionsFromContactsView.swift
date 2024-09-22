@@ -7,8 +7,13 @@
 
 import SwiftUI
 
-struct ChatOptionsFromContactsView: View {
-    let user : UserItems
+struct ChatOptionsFromContactsView<Content: View>: View {
+    private let user : UserItems
+    private let trailingItems : Content
+    init(user: UserItems,@ViewBuilder trailingItems: ()->Content = {EmptyView()}) {
+        self.user = user
+        self.trailingItems = trailingItems()
+    }
     var body: some View {
         HStack{
             Circle()
@@ -22,6 +27,7 @@ struct ChatOptionsFromContactsView: View {
                     .font(.caption)
                     .foregroundStyle(.gray)
             }
+            trailingItems
         }
     }
 }
