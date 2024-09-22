@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatsTabScreen: View {
     @State private var searchText = ""
+    @State private var showNewMemberAddScreen = false
     var body: some View {
         NavigationStack{
             HStack {
@@ -35,6 +36,9 @@ struct ChatsTabScreen: View {
             .toolbar{
                 leadingNavItems()
                 trailingNavItems()
+            }
+            .sheet(isPresented: $showNewMemberAddScreen) {
+                NewMemberAddScreen()
             }
         }
     }
@@ -124,7 +128,7 @@ extension ChatsTabScreen {
     
     private func newChatButton() -> some View{
         Button{
-            
+            showNewMemberAddScreen = true
         }label: {
             Image(.plus)
         }
