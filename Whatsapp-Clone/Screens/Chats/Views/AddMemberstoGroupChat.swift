@@ -18,13 +18,16 @@ struct AddMemberstoGroupChat: View {
                 }
             }
             Section{
-                ForEach(UserItems.placeholders) { item in
+                ForEach(viewModel.users) { item in
                     Button{
                         viewModel.handleItemSelection(item)
                     }label: {
                         groupChatPartner(item)
                     }
                 }
+            }
+            if viewModel.isPaginateable{
+                loadMoreUsers()
             }
         }
         .padding(.top,-20)
@@ -47,6 +50,14 @@ struct AddMemberstoGroupChat: View {
                 .foregroundStyle(color)
                 .imageScale(.large)
         }
+    }
+    private func loadMoreUsers() -> some View {
+        ProgressView()
+            .frame(maxWidth: .infinity)
+            .listRowBackground(Color.clear)
+            .task {
+                await viewModel.fetchUsers()
+            }
     }
 }
 extension AddMemberstoGroupChat {

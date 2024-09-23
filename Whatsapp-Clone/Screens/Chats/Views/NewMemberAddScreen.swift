@@ -21,13 +21,16 @@ struct NewMemberAddScreen: View {
                 HeaderView(item: .newContact)
                 HeaderView(item: .newCommuity)
                 Section{
-                    ForEach(1..<18) {_ in
-                        ChatOptionsFromContactsView(user: .placeholder)
+                    ForEach(viewModel.users) {user in
+                        ChatOptionsFromContactsView(user: user)
                     }
                 }header: {
                     Text("Contacts On Whatsapp")
                         .textCase(nil)
                         .bold()
+                }
+                if viewModel.isPaginateable {
+                    loadMoreUsers()
                 }
             }
             .padding(.top,-20)
@@ -41,6 +44,14 @@ struct NewMemberAddScreen: View {
                 trailingNavItems()
             }
         }
+    }
+    private func loadMoreUsers() -> some View {
+        ProgressView()
+            .frame(maxWidth: .infinity)
+            .listRowBackground(Color.clear)
+            .task {
+                await viewModel.fetchUsers()
+            }
     }
 }
 extension NewMemberAddScreen {

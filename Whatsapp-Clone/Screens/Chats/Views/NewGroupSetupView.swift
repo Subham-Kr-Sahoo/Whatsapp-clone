@@ -29,7 +29,7 @@ struct NewGroupSetupView: View {
                         .bold()
                     let count = viewModel.selectedChatPartner.count
                     let maxCount = channelContents.maxGroupParticipants
-                    Text("\(count)/\(maxCount)")
+                    Text("\(count) of \(maxCount)")
                 }
             }
             .listRowBackground(Color.clear)
@@ -43,14 +43,25 @@ struct NewGroupSetupView: View {
     }
     private func groupNameView() -> some View{
         HStack(alignment: .center){
-            Image(systemName: "camera")
-                .foregroundStyle(.blue)
-                .padding(20)
-                .background(Color(.systemGray6))
-                .clipShape(.circle)
-                .padding(.trailing,8)
+            profileImageView()
+                
             TextField("", text: $groupName,prompt: Text("Group Name"),axis: .vertical)
                 .autocorrectionDisabled()
+        }
+    }
+    private func profileImageView() -> some View{
+        Button{
+            
+        }label: {
+            ZStack{
+                Image(systemName: "camera")
+                    .imageScale(.large)
+            }
+            .frame(width:60,height:60)
+            .background(Color(.systemGray6))
+            .clipShape(.circle)
+            .padding(.trailing,8)
+            .foregroundStyle(.blue)
         }
     }
     @ToolbarContentBuilder

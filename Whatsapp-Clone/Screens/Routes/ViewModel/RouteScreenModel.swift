@@ -16,5 +16,14 @@ final class RouteScreenModel : ObservableObject {
             .sink {[weak self] AuthState in
                 self?.authState = AuthState
             }
+//        AuthManager.testAccounts.forEach { exampleMail in
+//            registerTestAccount(with: exampleMail)
+//        }
     }
+//    private func registerTestAccount(with email:String){
+//        Task{
+//            let username = email.replacingOccurrences(of: "@example.com", with: "")
+//            try? await AuthManager.shared.createAccount(for: username, with: email, and: "1234567890")
+//        }
+//    }
 }

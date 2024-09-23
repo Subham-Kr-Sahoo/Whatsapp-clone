@@ -118,3 +118,58 @@ extension AuthManager {
     }
 }
 
+//MARK: test data for fetching users in a paginating manner
+extension AuthManager {
+    static let testAccounts : [String] = [
+        "arunsingh@example.com",
+        "rahulsharma@example.com",
+        "priyapatel@example.com",
+        "nehaagarwal@example.com",
+        "amitverma@example.com",
+        "deepakgupta@example.com",
+        "sumanrao@example.com",
+        "vikashkumar@example.com",
+        "anjalipandey@example.com",
+        "manojyadav@example.com",
+        "rekhasingh@example.com",
+        "sunilkhan@example.com",
+        "purnimalokhande@example.com",
+        "santhoshreddy@example.com",
+        "shivapillai@example.com",
+        "rakeshtiwari@example.com",
+        "seemagupta@example.com",
+        "rishabhdesai@example.com",
+        "nidhiiyer@example.com",
+        "abhishekmishra@example.com",
+        "kritikabansal@example.com",
+        "anuragjain@example.com",
+        "poonamkhan@example.com",
+        "naveenrao@example.com",
+        "sandhyapatil@example.com",
+        "sandeepbose@example.com",
+        "gayatrichowdhury@example.com",
+        "pradeeppatel@example.com",
+        "jyotigupta@example.com",
+        "anushkapandey@example.com",
+        "karthiknambiar@example.com",
+        "shreyaagarwal@example.com",
+        "ankurbhatt@example.com",
+        "lavanyaacharya@example.com",
+        "ashutoshshah@example.com",
+        "ruchikaverma@example.com",
+        "siddhartmalik@example.com",
+        "rajatmehta@example.com",
+        "shrutikulkarni@example.com",
+        "adarshyadav@example.com",
+        "mohitsharma@example.com",
+        "meenakshiiyer@example.com",
+        "vandanadesai@example.com",
+        "karanmishra@example.com",
+        "riyaagarwal@example.com",
+        "sohankumar@example.com",
+        "tarundhawan@example.com",
+        "meghatiwari@example.com",
+        "jayashreebhat@example.com"
+    ]
+}
+
