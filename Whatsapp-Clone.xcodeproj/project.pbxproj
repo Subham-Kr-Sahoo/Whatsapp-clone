@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		910918152CA1B9E600580C3B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910918142CA1B9E600580C3B /* UserService.swift */; };
+		910918172CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910918162CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift */; };
 		910A2DCC2C97955B00C3EACA /* Whatsapp_CloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */; };
 		910A2DD02C97955D00C3EACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910A2DCF2C97955D00C3EACA /* Assets.xcassets */; };
 		910A2DD32C97955D00C3EACA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910A2DD22C97955D00C3EACA /* Preview Assets.xcassets */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		910918142CA1B9E600580C3B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		910918162CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMakeProfileImageofUserView.swift; sourceTree = "<group>"; };
 		910A2DC82C97955B00C3EACA /* Whatsapp-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whatsapp-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whatsapp_CloneApp.swift; sourceTree = "<group>"; };
 		910A2DCF2C97955D00C3EACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				9165D0C72CA06EF10054422E /* NewGroupSetupView.swift */,
 				9152A3332CA0547C00B778AA /* AddMemberstoGroupChat.swift */,
 				9165D0C52CA05ED40054422E /* SelectedChatPartnerView.swift */,
+				910918162CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				9142F98A2C9A2C20004531F8 /* MessageItems.swift in Sources */,
 				9152A3342CA0547C00B778AA /* AddMemberstoGroupChat.swift in Sources */,
 				9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */,
+				910918172CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift in Sources */,
 				9152A30F2C9DA21C00B778AA /* AuthHeaderView.swift in Sources */,
 				9152A31A2C9E332C00B778AA /* AuthProvider.swift in Sources */,
 				9165D0C62CA05ED40054422E /* SelectedChatPartnerView.swift in Sources */,

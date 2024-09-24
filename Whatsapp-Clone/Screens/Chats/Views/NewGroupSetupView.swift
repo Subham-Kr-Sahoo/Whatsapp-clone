@@ -20,7 +20,7 @@ struct NewGroupSetupView: View {
                 Text("Group Permissions")
             }
             Section{
-                SelectedChatPartnerView(users: viewModel.selectedChatPartner) { user in
+                GroupMakeProfileImageofUserView(users: viewModel.selectedChatPartner) { user in
                     viewModel.handleItemSelection(user)
                 }
             }header: {
