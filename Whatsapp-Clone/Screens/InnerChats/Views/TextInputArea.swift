@@ -30,6 +30,8 @@ struct TextInputArea: View {
         // size konse direction me badhega
         TextField("Message",text: $text,axis: .vertical)
             .padding(5)
+            .lineLimit(5) //here line limit works great if the line exceeds it works as a scroll view
+            .autocorrectionDisabled()
             .background(
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
                     .fill(.thinMaterial)

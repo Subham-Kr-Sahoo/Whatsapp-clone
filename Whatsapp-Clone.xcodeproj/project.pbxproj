@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		910918152CA1B9E600580C3B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910918142CA1B9E600580C3B /* UserService.swift */; };
 		910918172CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910918162CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift */; };
-		9109181B2CA484AD00580C3B /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9109181A2CA484AD00580C3B /* UserImageView.swift */; };
 		910A2DCC2C97955B00C3EACA /* Whatsapp_CloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */; };
 		910A2DD02C97955D00C3EACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910A2DCF2C97955D00C3EACA /* Assets.xcassets */; };
 		910A2DD32C97955D00C3EACA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910A2DD22C97955D00C3EACA /* Preview Assets.xcassets */; };
@@ -59,7 +58,6 @@
 /* Begin PBXFileReference section */
 		910918142CA1B9E600580C3B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		910918162CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMakeProfileImageofUserView.swift; sourceTree = "<group>"; };
-		9109181A2CA484AD00580C3B /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		910A2DC82C97955B00C3EACA /* Whatsapp-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whatsapp-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		910A2DCB2C97955B00C3EACA /* Whatsapp_CloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whatsapp_CloneApp.swift; sourceTree = "<group>"; };
 		910A2DCF2C97955D00C3EACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 				9165D0C72CA06EF10054422E /* NewGroupSetupView.swift */,
 				9152A3332CA0547C00B778AA /* AddMemberstoGroupChat.swift */,
 				9165D0C52CA05ED40054422E /* SelectedChatPartnerView.swift */,
-				9109181A2CA484AD00580C3B /* UserImageView.swift */,
 				910918162CA1DA5200580C3B /* GroupMakeProfileImageofUserView.swift */,
 			);
 			path = Views;
@@ -501,7 +498,6 @@
 				9152A3222C9E52C000B778AA /* RouteScreenModel.swift in Sources */,
 				9152A3152C9E267600B778AA /* SignupScreen.swift in Sources */,
 				9142F98E2C9A2D40004531F8 /* BubbleTailView.swift in Sources */,
-				9109181B2CA484AD00580C3B /* UserImageView.swift in Sources */,
 				9152A3252C9F131900B778AA /* UserItems.swift in Sources */,
 				9142F9832C99DF40004531F8 /* TextInputArea.swift in Sources */,
 				9142F96E2C984D48004531F8 /* CommunityTabScreen.swift in Sources */,
