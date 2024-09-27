@@ -25,14 +25,7 @@ struct NewMemberAddScreen: View {
                     ForEach(viewModel.users) {user in
                         ChatOptionsFromContactsView(user: user)
                             .onTapGesture {
-                                viewModel.selectedChatPartner.append(user)
-                                let createChannel = viewModel.createChannel(nil)
-                                switch createChannel {
-                                case .success(let channelItem):
-                                    onCreate(channelItem)
-                                case .failure(let failure):
-                                    print("failed to create the channel \(failure.localizedDescription)")
-                                }
+                                viewModel.createDirectChannel(user, completion: onCreate)
                             }
                     }
                 }header: {
@@ -51,8 +44,18 @@ struct NewMemberAddScreen: View {
                 destinationView(for: Route)
             })
             .navigationBarTitleDisplayMode(.inline)
+            .alert(isPresented: $viewModel.errorState.showError) {
+                Alert(
+                    title: Text("Something went wrong"),
+                    message: Text(viewModel.errorState.errorMessage),
+                    dismissButton: .default(Text("OK"))
+                    )
+            }
             .toolbar{
                 trailingNavItems()
+            }
+            .onAppear{
+                viewModel.deselectAllChatPartners()
             }
         }
     }
@@ -72,7 +75,7 @@ extension NewMemberAddScreen {
         case .addGroupChatMembers:
             AddMemberstoGroupChat(viewModel: viewModel)
         case .setUpGroupChat:
-            NewGroupSetupView(viewModel: viewModel)
+            NewGroupSetupView(viewModel: viewModel,onCreate: onCreate)
         }
     }
 }

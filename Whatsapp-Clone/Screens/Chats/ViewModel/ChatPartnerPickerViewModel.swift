@@ -27,6 +27,7 @@ final class ChatPartnerPickerViewModel : ObservableObject {
     @Published var navStack = [chatCreationRoute]()
     @Published var selectedChatPartner = [UserItems]()
     @Published private(set) var users = [UserItems]()
+    @Published var errorState : (showError: Bool, errorMessage: String) = (false,"Error")
     private var lastCursor : String?
     
     var showSelectedUser: Bool {
@@ -60,11 +61,22 @@ final class ChatPartnerPickerViewModel : ObservableObject {
         }
     }
     
+    func deselectAllChatPartners(){
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5){
+            self.selectedChatPartner.removeAll()
+        }
+    }
+    
     func handleItemSelection(_ item: UserItems) {
         if isUserSelected(item){ // deselect
             guard let index = selectedChatPartner.firstIndex(where:{$0.uid == item.uid}) else {return}
             selectedChatPartner.remove(at: index)
         }else{ // select that user
+            guard selectedChatPartner.count < channelContents.maxGroupParticipants else {
+                let errorMessage = "Sorry you can't add more than \(channelContents.maxGroupParticipants) people to a group."
+                showError(errorMessage)
+                return
+            }
             selectedChatPartner.append(item)
         }
     }
@@ -72,32 +84,86 @@ final class ChatPartnerPickerViewModel : ObservableObject {
         let isSelected = selectedChatPartner.contains {$0.uid == user.uid}
         return isSelected
     }
-//    func buidDirectChannel() async -> Result<ChatItem,Error>{
-//        
-//    }
-    func createChannel(_ channelName:String?) -> Result<ChatItem,Error> {
+    func createDirectChannel(_ chatPartner:UserItems,completion: @escaping (_ newChannel: ChatItem) -> Void){
+        selectedChatPartner.append(chatPartner)
+        Task{
+            // if existing channel then , get the channel
+            if let channelId = await verifyDirectChannelExists(with: chatPartner.uid){
+                let snapshot = try await FirebaseConstants.channelsRef.child(channelId).getData()
+                let chanelDict = snapshot.value as! [String: Any]
+                var directChannel = ChatItem(chanelDict)
+                directChannel.members = selectedChatPartner
+                completion(directChannel)
+            }else{
+                // create a new DM with the user
+                let channelCreation = createChannel(nil)
+                switch channelCreation {
+                case .success(let channel):
+                    completion(channel)
+                case .failure(let failure):
+                    showError("Sorry! Something went wrong while we were trying setup your chat")
+                    print("Failed to create a Direct channel: \(failure.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    typealias channelId = String
+    private func verifyDirectChannelExists(with chatPartnerId: String) async -> channelId? {
+        guard let currentUid = Auth.auth().currentUser?.uid,
+              let snapShot = try? await FirebaseConstants.userDirectChannels.child(currentUid).child(chatPartnerId).getData(),
+              snapShot.exists()
+        else {
+            return nil
+        }
+        let directMessageDict = snapShot.value as! [String:Bool]
+        let channelId = directMessageDict.compactMap {$0.key}.first
+        return channelId
+    }
+    func createGroupChannel(_ groupName: String, completion: @escaping (_ newChannel: ChatItem) -> Void){
+        let channelCreation = createChannel(groupName)
+        switch channelCreation {
+        case .success(let channel):
+            completion(channel)
+        case .failure(let failure):
+            showError("Sorry! Something went wrong while we were trying setup your group chat")
+            print("Failed to create a Group channel: \(failure.localizedDescription)")
+        }
+    }
+    private func showError(_ errorMessage: String) {
+        errorState.errorMessage = errorMessage
+        errorState.showError = true
+    }
+    private func createChannel(_ channelName:String?) -> Result<ChatItem,Error> {
         guard !selectedChatPartner.isEmpty else {return .failure(channelCreationError.emptyChatPartner)}
         guard
             let channelId = FirebaseConstants.channelsRef.childByAutoId().key,
-            let currentUid = Auth.auth().currentUser?.uid
-            //let messageId = FirebaseConstants.messagesRef.childByAutoId().key
+            let currentUid = Auth.auth().currentUser?.uid,
+            let messageId = FirebaseConstants.messagesRef.childByAutoId().key
         else {return .failure(channelCreationError.failedToCreateUniqueIds)}
         let timeStamp = Date().timeIntervalSince1970
         var membersUid = selectedChatPartner.compactMap {$0.uid}
         membersUid.append(currentUid)
+        
+        let newChannelBroadCast = AdminMessageType.channelCreation.rawValue
+        
         var channelDict : [String:Any] = [
             .id:channelId,
-            .lastMessage:"",
+            .lastMessage:newChannelBroadCast,
             .creationDate:timeStamp,
             .lastMessageTimeStamp:timeStamp,
             .memberUids:membersUid,
             .membersCount:membersUid.count,
-            .adminUids:[currentUid]
+            .adminUids:[currentUid],
+            .createdBy: currentUid
         ]
         if let channelName = channelName , !channelName.isEmptyOrWhiteSpace {
             channelDict[.name] = channelName
         }
+        let messageDict : [String:Any] = [.type: newChannelBroadCast, .timeStamp:timeStamp, .ownerUid:currentUid]
         FirebaseConstants.channelsRef.child(channelId).setValue(channelDict)
+        FirebaseConstants.messagesRef.child(channelId).child(messageId).setValue(messageDict)
+        
         membersUid.forEach{userId in
             // keeping an index of the channel where the user belongs to
             FirebaseConstants.userChannelsRef.child(userId).child(channelId).setValue(true)

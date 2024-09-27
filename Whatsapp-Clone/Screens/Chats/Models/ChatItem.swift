@@ -15,11 +15,12 @@ struct ChatItem : Identifiable {
     var lastMessage : String
     var creationDate : Date
     var lastMessageTimeStamp : Date
-    var membersCount : UInt
+    var membersCount : Int
     var adminUids : [String]
     var memberUids : [String]
     var members : [UserItems]
     var thumbNailUrL : String?
+    let createdBy : String
     
     var groupChannel : Bool {
         return membersCount > 2
@@ -41,7 +42,8 @@ struct ChatItem : Identifiable {
         }
     }
     
-    static let placeholder = ChatItem.init(id: "1", lastMessage: "Hello World", creationDate: Date(), lastMessageTimeStamp: Date(), membersCount: 2, adminUids: [], memberUids: [], members: [])
+    
+    static let placeholder = ChatItem.init(id: "1", lastMessage: "Hello World", creationDate: Date(), lastMessageTimeStamp: Date(), membersCount: 2, adminUids: [], memberUids: [], members: [],createdBy: "")
     
 }
 extension ChatItem {
@@ -53,11 +55,12 @@ extension ChatItem {
         self.creationDate = Date(timeIntervalSince1970: creationInterval)
         let lastMessageTimeStamp = dict[.lastMessageTimeStamp] as? Double ?? 0
         self.lastMessageTimeStamp = Date(timeIntervalSince1970: lastMessageTimeStamp)
-        self.membersCount = dict[.membersCount] as? UInt ?? 0
+        self.membersCount = dict[.membersCount] as? Int ?? 0
         self.adminUids = dict[.adminUids] as? [String] ?? []
         self.memberUids = dict[.memberUids] as? [String] ?? []
         self.members = dict[.members] as? [UserItems] ?? []
         self.thumbNailUrL = dict[.thumbNailUrl] as? String ?? nil
+        self.createdBy = dict[.createdBy] as? String ?? ""
     }
 }
 extension String {
@@ -71,5 +74,6 @@ extension String {
     static let memberUids = "memberUids"
     static let thumbNailUrl = "thumbNailUrl"
     static let members = "members"
+    static let createdBy = "createdBy"
 }
 
