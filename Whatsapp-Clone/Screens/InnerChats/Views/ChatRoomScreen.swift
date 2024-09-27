@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatRoomScreen: View {
+    let channel : ChatItem
     var body: some View {
         MessageListView()
         .toolbar(.hidden,for: .tabBar)
@@ -28,7 +29,7 @@ extension ChatRoomScreen {
             HStack{
                 Circle()
                     .frame(width:40,height:40)
-                Text("Subham Kumar Sahoo")
+                Text(channel.title)
                     .bold()
             }
         }
@@ -57,6 +58,6 @@ extension ChatRoomScreen {
 }
 #Preview {
     NavigationStack {
-        ChatRoomScreen()
+        ChatRoomScreen(channel: .placeholder)
     }
 }

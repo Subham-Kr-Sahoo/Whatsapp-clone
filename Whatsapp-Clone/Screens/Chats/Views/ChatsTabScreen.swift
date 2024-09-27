@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChatsTabScreen: View {
     @State private var searchText = ""
-    @State private var showNewMemberAddScreen = false
+    @StateObject private var viewModel = ChatTabViewModel()
     var body: some View {
         NavigationStack{
             HStack {
@@ -22,7 +22,7 @@ struct ChatsTabScreen: View {
                 archivedButton()
                 ForEach(0..<12){_ in
                     NavigationLink{
-                        ChatRoomScreen()
+                        ChatRoomScreen(channel: .placeholder)
                     } label: {
                         ChatsItemView()
                     }
@@ -37,8 +37,13 @@ struct ChatsTabScreen: View {
                 leadingNavItems()
                 trailingNavItems()
             }
-            .sheet(isPresented: $showNewMemberAddScreen) {
-                NewMemberAddScreen()
+            .sheet(isPresented: $viewModel.showNewMemberAddScreen) {
+                NewMemberAddScreen(onCreate: viewModel.onNewChatCreation)
+            }
+            .navigationDestination(isPresented: $viewModel.navigateToChatRoom) {
+                if let newChannel = viewModel.newChat {
+                    ChatRoomScreen(channel: newChannel)
+                }
             }
         }
     }
@@ -128,7 +133,7 @@ extension ChatsTabScreen {
     
     private func newChatButton() -> some View{
         Button{
-            showNewMemberAddScreen = true
+            viewModel.showNewMemberAddScreen = true
         }label: {
             Image(.plus)
         }
