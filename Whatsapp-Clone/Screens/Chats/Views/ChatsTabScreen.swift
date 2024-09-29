@@ -20,11 +20,11 @@ struct ChatsTabScreen: View {
             }.padding(.leading)
             List{
                 archivedButton()
-                ForEach(0..<12){_ in
+                ForEach(viewModel.channels){channel in
                     NavigationLink{
-                        ChatRoomScreen(channel: .placeholder)
+                        ChatRoomScreen(channel: channel)
                     } label: {
-                        ChatsItemView()
+                        ChatsItemView(channel: channel)
                     }
                 }
                 inboxFooterView()

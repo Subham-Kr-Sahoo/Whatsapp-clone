@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatsItemView: View {
+    let channel : ChatItem
     var body: some View {
         HStack(alignment:.center,spacing: 10){
             Circle()
@@ -21,7 +22,7 @@ struct ChatsItemView: View {
     }
     private func titleTextView() -> some View {
         HStack{
-            Text("Username Here...")
+            Text(channel.title)
                 .lineLimit(1)
                 .bold()
             
@@ -34,7 +35,7 @@ struct ChatsItemView: View {
     }
     
     private func lastMessagePreview() -> some View{
-        Text("Hello World")
+        Text(channel.lastMessage)
             .font(.system(size: 16))
             .lineLimit(1)
             .foregroundStyle(.gray)
@@ -42,5 +43,5 @@ struct ChatsItemView: View {
 }
 
 #Preview {
-    ChatsItemView()
+    ChatsItemView(channel: .placeholder)
 }
