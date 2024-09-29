@@ -34,7 +34,11 @@ struct MessageService {
                 let messageDict = value as? [String:Any] ?? [:]
                 let message = MessageItems(id: key, dict: messageDict)
                 messages.append(message)
-                onComplete(messages)
+                if messages.count == snapshot.childrenCount {
+                    messages.sort {$0.timeStamp < $1.timeStamp}
+                    onComplete(messages)
+                }
+                
             }
         }withCancel: { error in
             print("\(error.localizedDescription)")
