@@ -14,6 +14,8 @@ final class ChatTabViewModel : ObservableObject {
     @Published var newChat : ChatItem?
     @Published var showNewMemberAddScreen = false
     @Published var channels = [ChatItem]()
+    typealias ChannelId = String
+    @Published var channelDictionary : [ChannelId : ChatItem] = [:]
     init(){
         fetchCurrentUserChats()
     }
@@ -43,7 +45,8 @@ final class ChatTabViewModel : ObservableObject {
             var channel = ChatItem(dict)
             self?.getChatMembers(channel, completion: { members in
                 channel.members = members
-                self?.channels.append(channel)
+                self?.channelDictionary[channelId] = channel
+                self?.reloadData()
                 print(channel.title)
             })
             
@@ -52,8 +55,14 @@ final class ChatTabViewModel : ObservableObject {
         }
     }
     private func getChatMembers(_ channel: ChatItem, completion: @escaping (_ members: [UserItems]) -> Void){
-        UserService.getUsers(with: channel.memberUids) { usernode in
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        let channelMembersUids = Array(channel.memberUids.filter {$0 != currentUid}.prefix(2))
+        UserService.getUsers(with: channelMembersUids) { usernode in
             completion(usernode.users)
         }
+    }
+    private func reloadData(){
+        self.channels = Array(channelDictionary.values)
+        self.channels.sort {$0.lastMessageTimeStamp > $1.lastMessageTimeStamp}
     }
 }
