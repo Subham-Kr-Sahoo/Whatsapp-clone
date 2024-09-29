@@ -13,6 +13,8 @@ import Combine
 final class MessageListController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = .clear
+        view.backgroundColor = .clear
         setUpViews()
         setUpMessageListeners()
     }
@@ -40,10 +42,20 @@ final class MessageListController : UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
+    private let backGroundImage : UIImageView = {
+        let backGroundImageView = UIImageView(image: .chatbackground)
+        backGroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        return backGroundImageView
+    }()
     private func setUpViews(){
+        view.addSubview(backGroundImage)
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
+            backGroundImage.topAnchor.constraint(equalTo: view.topAnchor),
+            backGroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backGroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backGroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -90,4 +102,5 @@ extension MessageListController : UITableViewDelegate , UITableViewDataSource {
 
 #Preview{
     MessageListView(viewModel: ChatRoomViewModel(.placeholder))
+        .ignoresSafeArea()
 }
