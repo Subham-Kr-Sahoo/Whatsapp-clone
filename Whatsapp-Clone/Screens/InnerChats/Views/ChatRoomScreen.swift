@@ -9,8 +9,14 @@ import SwiftUI
 
 struct ChatRoomScreen: View {
     let channel : ChatItem
+    @StateObject private var viewModel : ChatRoomViewModel
+    init(channel : ChatItem) {
+        self.channel = channel
+        _viewModel = StateObject(wrappedValue: ChatRoomViewModel(channel))
+    }
+   
     var body: some View {
-        MessageListView()
+        MessageListView(viewModel: viewModel)
         .toolbar(.hidden,for: .tabBar)
         .toolbar{
             leadingNavItems()
@@ -18,7 +24,9 @@ struct ChatRoomScreen: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom) {
-            TextInputArea()
+            TextInputArea(textMessage: $viewModel.textMessage){
+                viewModel.sendMessage()
+            }
         }
     }
 }

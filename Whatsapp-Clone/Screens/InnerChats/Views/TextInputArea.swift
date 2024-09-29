@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct TextInputArea: View {
-    @State private var text = ""
+    @Binding var textMessage : String
+    let onSendHandler : () -> Void
+    private var disabledSendButton : Bool {
+        return textMessage.isEmptyOrWhiteSpace
+    }
     var body: some View {
         HStack(alignment:.bottom,spacing: 8){
             imagePickerButton()
             audioRecorderButton()
             messageTextField()
             sendMessageButton()
+                .disabled(disabledSendButton)
+                .grayscale(disabledSendButton ? 0.8 : 0)
         }
         .padding(.bottom)
         .padding(.horizontal,8)
@@ -28,7 +34,7 @@ struct TextInputArea: View {
     private func messageTextField() -> some View {
         // axis kaa kaam yahi heh kie agar text bounded size se jyada hua toh
         // size konse direction me badhega
-        TextField("Message",text: $text,axis: .vertical)
+        TextField("Message",text: $textMessage,axis: .vertical)
             .padding(5)
             .lineLimit(5) //here line limit works great if the line exceeds it works as a scroll view
             .autocorrectionDisabled()
@@ -53,13 +59,13 @@ struct TextInputArea: View {
     
     private func sendMessageButton() -> some View {
         Button{
-            
+            onSendHandler()
         }label: {
             Image(systemName: "arrow.up")
                 .fontWeight(.heavy)
                 .foregroundStyle(.white)
                 .padding(6)
-                .background(Color.gray).opacity(1.5)
+                .background(Color.blue)
                 .clipShape(.circle)
                 
         }
@@ -82,5 +88,7 @@ struct TextInputArea: View {
 }
 
 #Preview {
-    TextInputArea()
+    TextInputArea(textMessage: .constant("")){
+        
+    }
 }
