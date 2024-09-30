@@ -19,11 +19,21 @@ struct ChatItem : Identifiable {
     var adminUids : [String]
     var memberUids : [String]
     var members : [UserItems]
-    var thumbNailUrL : String?
+    private var thumbNailUrL : String?
     let createdBy : String
     
     var groupChannel : Bool {
         return membersCount > 2
+    }
+    
+    var coverImgaeUrl: String? {
+        if let thumbNailUrL = thumbNailUrL {
+            return thumbNailUrL
+        }
+        if groupChannel == false {
+            return membersExcludeingMe.first?.profileImageUrl
+        }
+        return nil
     }
     
     var membersExcludeingMe : [UserItems] {

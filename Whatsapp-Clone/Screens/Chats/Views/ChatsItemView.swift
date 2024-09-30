@@ -11,8 +11,7 @@ struct ChatsItemView: View {
     let channel : ChatItem
     var body: some View {
         HStack(alignment:.center,spacing: 10){
-            Circle()
-                .frame(width:60,height:60)
+            CircularProfileImageView(channel,size:.medium)
             
             VStack(alignment:.leading,spacing: 6){
                 titleTextView()

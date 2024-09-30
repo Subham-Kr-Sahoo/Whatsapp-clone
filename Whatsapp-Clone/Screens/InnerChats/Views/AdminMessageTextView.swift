@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AdminMessageTextView: View {
     let chat : ChatItem
-    
+    // if somebody else made this group it doesnot shows the name of the user who created that group
     var body: some View {
         if chat.iscreatedByMe {
             textView("You created this group. Tap to add members")
