@@ -59,6 +59,7 @@
 		917B6AFD2C9B94F1009BE3E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */; };
 		917B6B032C9D9C76009BE3E2 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */; };
 		91FDF54A2CA9D2F0001DE2AF /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF5492CA9D2F0001DE2AF /* MessageService.swift */; };
+		91FDF54C2CAA0DD5001DE2AF /* ChannelCreationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		91FDF5492CA9D2F0001DE2AF /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 				9142F98B2C9A2CC6004531F8 /* BubbleTextView.swift */,
 				9142F9922C9A4116004531F8 /* BubbleImageView.swift */,
 				9142F98D2C9A2D40004531F8 /* BubbleTailView.swift */,
+				91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				9142F9712C989ED4004531F8 /* ChatsTabScreen.swift in Sources */,
 				9152A31F2C9E529700B778AA /* RoutesView.swift in Sources */,
 				917B6B032C9D9C76009BE3E2 /* LoginScreen.swift in Sources */,
+				91FDF54C2CAA0DD5001DE2AF /* ChannelCreationTextView.swift in Sources */,
 				9142F9872C99F9DB004531F8 /* MessageListView.swift in Sources */,
 				9142F9812C99D527004531F8 /* ChatRoomScreen.swift in Sources */,
 				9152A3112C9DEFD800B778AA /* AuthTextField.swift in Sources */,

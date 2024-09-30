@@ -82,12 +82,19 @@ extension MessageListController : UITableViewDelegate , UITableViewDataSource {
         let message = viewModel.messages[indexPath.row]
         cell.contentConfiguration = UIHostingConfiguration {
             switch message.type {
-                case .text :
-                    BubbleTextView(item: message)
-                case .photo,.video :
-                    BubbleImageView(item: message)
-                case .audio :
+            case .text :
+                BubbleTextView(item: message)
+            case .photo,.video :
+                BubbleImageView(item: message)
+            case .audio :
                 BubbleAudioView(item : message)
+            case .admin(let type):
+                switch type {
+                case .channelCreation:
+                    ChannelCreationTextView()
+                default:
+                    Text("admin Text")
+                }
             }
         }
         return cell
