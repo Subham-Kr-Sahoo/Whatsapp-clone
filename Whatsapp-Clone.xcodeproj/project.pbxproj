@@ -60,6 +60,7 @@
 		917B6B032C9D9C76009BE3E2 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */; };
 		91FDF54A2CA9D2F0001DE2AF /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF5492CA9D2F0001DE2AF /* MessageService.swift */; };
 		91FDF54C2CAA0DD5001DE2AF /* ChannelCreationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */; };
+		91FDF5632CAA2B12001DE2AF /* AdminMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF5622CAA2B12001DE2AF /* AdminMessageTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		91FDF5492CA9D2F0001DE2AF /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationTextView.swift; sourceTree = "<group>"; };
+		91FDF5622CAA2B12001DE2AF /* AdminMessageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 				9142F9922C9A4116004531F8 /* BubbleImageView.swift */,
 				9142F98D2C9A2D40004531F8 /* BubbleTailView.swift */,
 				91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */,
+				91FDF5622CAA2B12001DE2AF /* AdminMessageTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				9142F9852C99F5A2004531F8 /* MessageListController.swift in Sources */,
 				9152A3222C9E52C000B778AA /* RouteScreenModel.swift in Sources */,
 				9152A3152C9E267600B778AA /* SignupScreen.swift in Sources */,
+				91FDF5632CAA2B12001DE2AF /* AdminMessageTextView.swift in Sources */,
 				9142F98E2C9A2D40004531F8 /* BubbleTailView.swift in Sources */,
 				9152A3252C9F131900B778AA /* UserItems.swift in Sources */,
 				9142F9832C99DF40004531F8 /* TextInputArea.swift in Sources */,

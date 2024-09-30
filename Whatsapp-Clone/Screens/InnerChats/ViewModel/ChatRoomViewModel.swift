@@ -10,7 +10,7 @@ import Combine
 
 final class ChatRoomViewModel : ObservableObject {
     @Published var textMessage = ""
-    private let chat: ChatItem
+    private(set) var chat: ChatItem
     private var currentUser: UserItems?
     private var subscription = Set<AnyCancellable>()
     @Published var messages: [MessageItems] = []

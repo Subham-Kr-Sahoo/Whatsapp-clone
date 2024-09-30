@@ -42,6 +42,13 @@ struct ChatItem : Identifiable {
         }
     }
     
+    var iscreatedByMe : Bool {
+        return createdBy == Auth.auth().currentUser?.uid ?? ""
+    }
+    
+    var creatorName : String {
+        return members.first {$0.uid == createdBy}?.username ?? "SomeOne"
+    }
     
     static let placeholder = ChatItem.init(id: "1", lastMessage: "Hello World", creationDate: Date(), lastMessageTimeStamp: Date(), membersCount: 2, adminUids: [], memberUids: [], members: [],createdBy: "")
     
