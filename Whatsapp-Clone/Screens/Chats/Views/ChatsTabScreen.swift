@@ -106,6 +106,7 @@ extension ChatsTabScreen {
             }
         }
     }
+    
     @ToolbarContentBuilder
     private func trailingNavItems() -> some ToolbarContent {
         ToolbarItemGroup(placement: .topBarTrailing) {

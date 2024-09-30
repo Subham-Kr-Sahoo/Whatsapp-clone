@@ -63,6 +63,7 @@
 		91FDF5632CAA2B12001DE2AF /* AdminMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF5622CAA2B12001DE2AF /* AdminMessageTextView.swift */; };
 		91FDF5662CAB4E8E001DE2AF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 91FDF5652CAB4E8E001DE2AF /* Kingfisher */; };
 		91FDF5692CAB4EBE001DE2AF /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF5682CAB4EBE001DE2AF /* CircularProfileImageView.swift */; };
+		91FDF56B2CAB57AD001DE2AF /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF56A2CAB57AD001DE2AF /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationTextView.swift; sourceTree = "<group>"; };
 		91FDF5622CAA2B12001DE2AF /* AdminMessageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageTextView.swift; sourceTree = "<group>"; };
 		91FDF5682CAB4EBE001DE2AF /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
+		91FDF56A2CAB57AD001DE2AF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				9175602E2CA6224D00C0187E /* String+Extension.swift */,
+				91FDF56A2CAB57AD001DE2AF /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				9142F9712C989ED4004531F8 /* ChatsTabScreen.swift in Sources */,
 				9152A31F2C9E529700B778AA /* RoutesView.swift in Sources */,
 				917B6B032C9D9C76009BE3E2 /* LoginScreen.swift in Sources */,
+				91FDF56B2CAB57AD001DE2AF /* Date+Extension.swift in Sources */,
 				91FDF54C2CAA0DD5001DE2AF /* ChannelCreationTextView.swift in Sources */,
 				9142F9872C99F9DB004531F8 /* MessageListView.swift in Sources */,
 				9142F9812C99D527004531F8 /* ChatRoomScreen.swift in Sources */,
