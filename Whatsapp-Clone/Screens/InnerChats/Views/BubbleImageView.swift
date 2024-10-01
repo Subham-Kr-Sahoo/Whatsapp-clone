@@ -10,7 +10,10 @@ import SwiftUI
 struct BubbleImageView: View {
     let item: MessageItems
     var body: some View {
-        HStack{
+        HStack(alignment: .bottom){
+            if item.showGroupPartnerInfo {
+                CircularProfileImageView(item.sender?.profileImageUrl,size: .mini)
+            }
             if item.direction == .sent {Spacer()}
             HStack{
                 if item.direction == .sent {shareButton()}
@@ -25,6 +28,8 @@ struct BubbleImageView: View {
             if item.direction == .received {Spacer()}
         }
         .padding(.horizontal, 10)
+        .padding(.leading,item.leadingPaddings-20)
+        .padding(.trailing,item.trailingPaddings)
     }
     private func playButton() -> some View {
         Image(systemName: "play.fill")
@@ -56,10 +61,12 @@ struct BubbleImageView: View {
                 })
                 .padding(5)
             
-            Text(item.text)
-                .padding([.horizontal,.bottom],8)
-                .frame(maxWidth: .infinity,alignment: .leading)
-                .frame(width:200)
+            if !item.text.isEmptyOrWhiteSpace {
+                Text(item.text)
+                    .padding([.horizontal,.bottom],8)
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                    .frame(width:200)
+            }
         }
         .background(item.backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))

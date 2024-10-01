@@ -32,13 +32,12 @@ struct MessageService {
             var messages : [MessageItems] = []
             dict.forEach { key, value in
                 let messageDict = value as? [String:Any] ?? [:]
-                let message = MessageItems(id: key, dict: messageDict)
+                let message = MessageItems(id: key,groupChat: chat.groupChannel ,dict: messageDict)
                 messages.append(message)
                 if messages.count == snapshot.childrenCount {
                     messages.sort {$0.timeStamp < $1.timeStamp}
                     onComplete(messages)
                 }
-                
             }
         }withCancel: { error in
             print("\(error.localizedDescription)")
