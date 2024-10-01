@@ -27,10 +27,16 @@ final class ChatRoomViewModel : ObservableObject {
     }
     private func listenToAuthState() {
         AuthManager.shared.authState.receive (on: DispatchQueue.main).sink {[weak self] authState in
+            guard let self = self else {return}
             switch authState {
             case .loggedIn(let currentUser) :
-                self?.currentUser = currentUser
-                self?.getMessage()
+                self.currentUser = currentUser
+                if self.chat.allMembersFetched {
+                    self.getMessage()
+                    print("\(chat.members.map {$0.username})")
+                }else{
+                    self.getAllChannelMembers()
+                }
             default :
                 break
             }
@@ -45,7 +51,18 @@ final class ChatRoomViewModel : ObservableObject {
     private func getMessage(){
         MessageService.getMessage(for: chat) { [weak self] messages in
             self?.messages = messages
-            print(messages.map {$0.text})
+        }
+    }
+    private func getAllChannelMembers() {
+        guard let currentUser = currentUser else {return}
+        let membersAlreadyfetched = chat.members.compactMap{$0.uid}
+        var membersUidToFetch = chat.memberUids.filter {!membersAlreadyfetched.contains($0)}
+        membersUidToFetch = membersUidToFetch.filter {$0 != currentUser.uid}
+        UserService.getUsers(with: membersUidToFetch) { [weak self] userNode in
+            guard let self = self else {return}
+            self.chat.members.append(contentsOf: userNode.users)
+            self.getMessage()
+            print("\(chat.members.map {$0.username})")
         }
     }
 }

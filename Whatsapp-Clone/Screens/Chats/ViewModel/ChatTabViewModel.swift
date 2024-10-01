@@ -16,7 +16,9 @@ final class ChatTabViewModel : ObservableObject {
     @Published var channels = [ChatItem]()
     typealias ChannelId = String
     @Published var channelDictionary : [ChannelId : ChatItem] = [:]
-    init(){
+    private let currentUser : UserItems
+    init(_ currentUser : UserItems){
+        self.currentUser = currentUser
         fetchCurrentUserChats()
     }
     
@@ -41,13 +43,13 @@ final class ChatTabViewModel : ObservableObject {
     
     private func getChat(with channelId: String){
         FirebaseConstants.channelsRef.child(channelId).observe(.value) { [weak self] snapshot in
-            guard let dict = snapshot.value as? [String: Any] else { return }
+            guard let dict = snapshot.value as? [String: Any], let self = self else { return }
             var channel = ChatItem(dict)
-            self?.getChatMembers(channel, completion: { members in
+            self.getChatMembers(channel, completion: { members in
                 channel.members = members
-                self?.channelDictionary[channelId] = channel
-                self?.reloadData()
-                print(channel.title)
+                channel.members.append(self.currentUser)
+                self.channelDictionary[channelId] = channel
+                self.reloadData()
             })
             
         } withCancel: { error in

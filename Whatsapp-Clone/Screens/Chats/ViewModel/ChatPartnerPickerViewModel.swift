@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import Combine
 
 enum chatCreationRoute {
     case addGroupChatMembers
@@ -29,7 +30,8 @@ final class ChatPartnerPickerViewModel : ObservableObject {
     @Published private(set) var users = [UserItems]()
     @Published var errorState : (showError: Bool, errorMessage: String) = (false,"Error")
     private var lastCursor : String?
-    
+    private var subscription: AnyCancellable?
+    private var currentUser : UserItems?
     var showSelectedUser: Bool {
         return !selectedChatPartner.isEmpty
     }
@@ -43,11 +45,25 @@ final class ChatPartnerPickerViewModel : ObservableObject {
         return selectedChatPartner.count == 1
     }
     init(){
-        Task{
-            await fetchUsers()
-        }
+        listenforAuthState()
     }
     
+    deinit {
+        subscription?.cancel()
+        subscription = nil
+    }
+    
+    private func listenforAuthState(){
+        subscription = AuthManager.shared.authState.receive(on: DispatchQueue.main).sink { [weak self] authState in
+            switch authState{
+            case .loggedIn(let currentUser):
+                self?.currentUser = currentUser
+                Task{ await self?.fetchUsers() }
+            default:
+                break
+            }
+        }
+    }
     func fetchUsers() async {
         do{
             let userNode = try await UserService.paginateUsers(lastCursor: lastCursor, pageSize: 10)
@@ -93,6 +109,9 @@ final class ChatPartnerPickerViewModel : ObservableObject {
                 let chanelDict = snapshot.value as! [String: Any]
                 var directChannel = ChatItem(chanelDict)
                 directChannel.members = selectedChatPartner
+                if let currentUser {
+                    directChannel.members.append(currentUser)
+                }
                 completion(directChannel)
             }else{
                 // create a new DM with the user
@@ -177,6 +196,9 @@ final class ChatPartnerPickerViewModel : ObservableObject {
         }
         var newChannelItem = ChatItem(channelDict)
         newChannelItem.members = selectedChatPartner
+        if let currentUser {
+            newChannelItem.members.append(currentUser)
+        }
         return .success(newChannelItem)
     }
 }

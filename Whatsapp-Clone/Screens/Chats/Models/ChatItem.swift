@@ -60,6 +60,10 @@ struct ChatItem : Identifiable {
         return members.first {$0.uid == createdBy}?.username ?? "Someone"
     }
     
+    var allMembersFetched : Bool {
+        return members.count == membersCount
+    }
+    
     static let placeholder = ChatItem.init(id: "1", lastMessage: "Hello World", creationDate: Date(), lastMessageTimeStamp: Date(), membersCount: 2, adminUids: [], memberUids: [], members: [],createdBy: "")
     
 }

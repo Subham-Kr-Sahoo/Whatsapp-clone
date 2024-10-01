@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ChatsTabScreen: View {
     @State private var searchText = ""
-    @StateObject private var viewModel = ChatTabViewModel()
+    @StateObject private var viewModel : ChatTabViewModel
+    init(_ currentUser: UserItems){
+        self._viewModel = StateObject(wrappedValue: ChatTabViewModel(currentUser))
+    }
     var body: some View {
         NavigationStack{
             HStack {
@@ -168,5 +171,5 @@ extension ChatsTabScreen {
 }
 
 #Preview {
-    ChatsTabScreen()
+    ChatsTabScreen(.placeholder)
 }
