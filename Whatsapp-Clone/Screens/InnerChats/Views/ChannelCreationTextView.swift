@@ -119,7 +119,7 @@ struct sheetView : View {
             Spacer()
         }
     }
-    //This button will direct to a webpage
+    //This button will direct to a webpage which is done ✅
     private func ButtonView() -> some View {
         Button{
             openURL("https://www.whatsapp.com/security")

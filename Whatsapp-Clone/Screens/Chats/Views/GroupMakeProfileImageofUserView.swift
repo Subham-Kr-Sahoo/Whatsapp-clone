@@ -25,9 +25,7 @@ struct GroupMakeProfileImageofUserView: View {
     }
     private func chatPartnerView(_ user: UserItems) -> some View{
         VStack(alignment: .center){
-            Circle()
-                .fill(.black.opacity(0.7))
-                .frame(width: 60, height: 60)
+            CircularProfileImageView(user.profileImageUrl,size: .medium)
                 .overlay(alignment: .topTrailing){
                     cancelButton(user)
                 }
@@ -35,7 +33,7 @@ struct GroupMakeProfileImageofUserView: View {
                 .frame(width: 70)
                 .lineLimit(1)
                 .truncationMode(.tail)
-                .foregroundColor(.black)
+                .foregroundStyle(Color.whatsAppBlack)
                 .font(.system(size:14))
         }
     }
