@@ -122,7 +122,7 @@ struct sheetView : View {
     //This button will direct to a webpage
     private func ButtonView() -> some View {
         Button{
-            
+            openURL("https://www.whatsapp.com/security")
         }label: {
             Text("Learn More")
                 .font(.headline)
@@ -131,6 +131,11 @@ struct sheetView : View {
                 .frame(maxWidth: .infinity)
                 .background(Color.green)
                 .cornerRadius(18)
+        }
+    }
+    private func openURL(_ urlString: String) {
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
         }
     }
 }
