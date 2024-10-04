@@ -41,6 +41,25 @@ struct MediaAttachmentPreview : View {
                     videoButton("play.fill", attachment: attachment)
                         .opacity(attachment.type == .video(UIImage(),.stubUrl) ? 1 : 0)
                 }
+                .overlay(alignment:.bottomLeading){
+                    imageButton(attachment)
+                        .opacity(attachment.type == .photo(UIImage()) ? 1 : 0)
+                    
+                }
+        }
+    }
+    
+    private func imageButton(_ attachment: MediaAttachment) -> some View {
+        Button{
+            
+        }label: {
+            Image(systemName: "photo")
+                .scaledToFit()
+                .imageScale(.medium)
+                .padding(5)
+                .foregroundStyle(.white)
+                .padding(2)
+                .bold()
         }
     }
     private func cancelButton(_ attachment : MediaAttachment) -> some View {
