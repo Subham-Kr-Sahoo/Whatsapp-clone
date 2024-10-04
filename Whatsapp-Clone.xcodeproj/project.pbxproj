@@ -58,6 +58,7 @@
 		917B6AFB2C9B92F2009BE3E2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AFA2C9B92F2009BE3E2 /* FirebaseStorage */; };
 		917B6AFD2C9B94F1009BE3E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */; };
 		917B6B032C9D9C76009BE3E2 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */; };
+		91F5D4882CB02C170053C748 /* MediaAttachmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F5D4872CB02C0A0053C748 /* MediaAttachmentPreview.swift */; };
 		91FDF54A2CA9D2F0001DE2AF /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF5492CA9D2F0001DE2AF /* MessageService.swift */; };
 		91FDF54C2CAA0DD5001DE2AF /* ChannelCreationTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */; };
 		91FDF5632CAA2B12001DE2AF /* AdminMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDF5622CAA2B12001DE2AF /* AdminMessageTextView.swift */; };
@@ -115,6 +116,7 @@
 		917560342CA9D00800C0187E /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		91F5D4872CB02C0A0053C748 /* MediaAttachmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAttachmentPreview.swift; sourceTree = "<group>"; };
 		91FDF5492CA9D2F0001DE2AF /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationTextView.swift; sourceTree = "<group>"; };
 		91FDF5622CAA2B12001DE2AF /* AdminMessageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageTextView.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		9142F97D2C98DC74004531F8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				91F5D4872CB02C0A0053C748 /* MediaAttachmentPreview.swift */,
 				9142F9802C99D527004531F8 /* ChatRoomScreen.swift */,
 				9142F9842C99F5A2004531F8 /* MessageListController.swift */,
 				9142F9822C99DF40004531F8 /* TextInputArea.swift */,
@@ -584,6 +587,7 @@
 				9142F98C2C9A2CC6004531F8 /* BubbleTextView.swift in Sources */,
 				9142F9782C98BA6D004531F8 /* SettingsItemView.swift in Sources */,
 				910A2DCC2C97955B00C3EACA /* Whatsapp_CloneApp.swift in Sources */,
+				91F5D4882CB02C170053C748 /* MediaAttachmentPreview.swift in Sources */,
 				9142F9912C9A2EAE004531F8 /* CustomModifiers.swift in Sources */,
 				910918152CA1B9E600580C3B /* UserService.swift in Sources */,
 				9142F9B12C9B4C87004531F8 /* BubbleAudioView.swift in Sources */,

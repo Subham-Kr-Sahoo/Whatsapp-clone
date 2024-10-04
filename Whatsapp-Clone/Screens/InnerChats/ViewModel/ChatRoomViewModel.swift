@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import SwiftUI
+import PhotosUI
 
 final class ChatRoomViewModel : ObservableObject {
     @Published var textMessage = ""
@@ -14,9 +16,17 @@ final class ChatRoomViewModel : ObservableObject {
     private var currentUser: UserItems?
     private var subscription = Set<AnyCancellable>()
     @Published var messages: [MessageItems] = []
+    @Published var showPhotoPicker = false
+    @Published var photoPickerItems : [PhotosPickerItem] = []
+    @Published var selectedPhotos : [UIImage] = []
+    
+    var showPhotoPickerPreview : Bool {
+        return !photoPickerItems.isEmpty
+    }
     init(_ chat: ChatItem) {
         self.chat = chat
         listenToAuthState()
+        onPhotoPickerSelection()
     }
     deinit {
         subscription.forEach{
@@ -63,6 +73,37 @@ final class ChatRoomViewModel : ObservableObject {
             self.chat.members.append(contentsOf: userNode.users)
             self.getMessage()
             print("\(chat.members.map {$0.username})")
+        }
+    }
+    
+    func handleTextInputArea(_ action: TextInputArea.userAction) {
+        switch action {
+        case .presentPhotoPicker:
+            showPhotoPicker = true
+        case .sendMessage:
+            sendMessage()
+        }
+    }
+    
+    private func onPhotoPickerSelection() {
+        $photoPickerItems.sink { [weak self] photos in
+            guard let self = self else {return}
+            Task{
+                await self.parsePhotoPickerItems(photos)
+            }
+        }
+        .store(in: &subscription)
+    }
+    
+    private func parsePhotoPickerItems(_ items: [PhotosPickerItem]) async {
+        for photo in items {
+            guard
+            let data = try? await photo.loadTransferable(type: Data.self),
+            let uiImage = UIImage(data:data)
+            else {return}
+            await MainActor.run {
+                self.selectedPhotos.insert(uiImage,at:0)
+            }
         }
     }
 }

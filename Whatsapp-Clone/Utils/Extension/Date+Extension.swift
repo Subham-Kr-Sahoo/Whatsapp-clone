@@ -19,7 +19,7 @@ extension Date {
         }else if calender.isDateInYesterday(self){
             return "Yesterday"
         }else{
-            dateFormatter.dateFormat = "dd/MMM/yyyy"
+            dateFormatter.dateFormat = "dd/MM/YYYY"
             return dateFormatter.string(from: self)
         }
     }
