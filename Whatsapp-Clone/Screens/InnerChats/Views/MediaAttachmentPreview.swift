@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MediaAttachmentPreview : View {
     let mediaAttachments : [MediaAttachment]
+    let actionHandler : (_ action:userAction) -> Void
     
     var body: some View {
         ScrollView(.horizontal,showsIndicators: false){
@@ -37,7 +38,7 @@ struct MediaAttachmentPreview : View {
                     cancelButton()
                 }
                 .overlay(alignment:.bottomLeading){
-                    videoButton()
+                    videoButton("play.fill", attachment: attachment)
                         .opacity(attachment.type == .video(UIImage(),.stubUrl) ? 1 : 0)
                 }
         }
@@ -58,28 +59,36 @@ struct MediaAttachmentPreview : View {
         }
     }
     
-    private func videoButton() -> some View {
-        Image(systemName: "video")
-            .scaledToFit()
-            .imageScale(.medium)
-            .padding(5)
-            .foregroundStyle(.white)
-            .padding(2)
-            .bold()
+    private func videoButton(_ systemName:String,attachment:MediaAttachment) -> some View {
+        Button{
+            actionHandler(.play(attachment))
+        }label: {
+            Image(systemName: "video")
+                .scaledToFit()
+                .imageScale(.medium)
+                .padding(5)
+                .foregroundStyle(.white)
+                .padding(2)
+                .bold()
+        }
     }
     
-    private func microPhoneButton() -> some View {
-        Image(systemName: "mic")
-            .scaledToFit()
-            .imageScale(.medium)
-            .padding(7)
-            .foregroundStyle(.black)
-            .background(Color.white.opacity(0.5))
-            .clipShape(.circle)
-            .padding(2)
+    private func microPhoneButton(_ systemName:String,attachment:MediaAttachment) -> some View {
+        Button{
+            actionHandler(.play(attachment))
+        }label: {
+            Image(systemName: "mic")
+                .scaledToFit()
+                .imageScale(.medium)
+                .padding(7)
+                .foregroundStyle(.black)
+                .background(Color.white.opacity(0.5))
+                .clipShape(.circle)
+                .padding(2)
+        }
     }
     
-    private func audioAttachmentView() -> some View {
+    private func audioAttachmentView(_ attachment : MediaAttachment) -> some View {
         ZStack{
             LinearGradient(colors: [.green,.green.opacity(0.5),.teal], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
@@ -91,7 +100,7 @@ struct MediaAttachmentPreview : View {
             cancelButton()
         }
         .overlay{
-            microPhoneButton()
+            microPhoneButton("mic.fill", attachment: attachment)
         }
         .overlay(alignment:.bottomLeading){
             Text("Hello World Music creation")
@@ -110,8 +119,14 @@ extension MediaAttachmentPreview {
         static let listHeight : CGFloat = 100
         static let imageDimension : CGFloat = 80
     }
+    
+    enum userAction {
+        case play(_ item: MediaAttachment)
+    }
 }
 
 #Preview {
-    MediaAttachmentPreview(mediaAttachments: [])
+    MediaAttachmentPreview(mediaAttachments: []){action in
+        
+    }
 }

@@ -3,4 +3,22 @@
    uuid = "D4AE5AB4-D17A-49D6-AA70-A693846F0119"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32529AF4-CC23-4A70-9802-846643C3B27D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../var/folders/xm/5lmdy5_57p70y2y70_h54kx40000gn/T/swift-generated-sources/@__swiftmacro_14Whatsapp_Clone0033MediaAttachmentPreviewswift_DbGHjfMX119_0_33_015D8357319C7B238E3109D537EEE0A8Ll7PreviewfMf_.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "$s14Whatsapp_Clone0033MediaAttachmentPreviewswift_DbGHjfMX119_0_33_015D8357319C7B238E3109D537EEE0A8Ll7PreviewfMf_15PreviewRegistryfMu_"
+            landmarkType = "37">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

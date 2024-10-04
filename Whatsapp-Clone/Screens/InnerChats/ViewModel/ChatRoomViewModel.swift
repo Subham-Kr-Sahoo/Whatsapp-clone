@@ -19,7 +19,7 @@ final class ChatRoomViewModel : ObservableObject {
     @Published var showPhotoPicker = false
     @Published var photoPickerItems : [PhotosPickerItem] = []
     @Published var mediaAttachments : [MediaAttachment] = []
-    
+    @Published var videoPlayerState : (show: Bool, player: AVPlayer?) = (false,nil)
     var showPhotoPickerPreview : Bool {
         return !photoPickerItems.isEmpty
     }
@@ -88,6 +88,8 @@ final class ChatRoomViewModel : ObservableObject {
     private func onPhotoPickerSelection() {
         $photoPickerItems.sink { [weak self] photos in
             guard let self = self else {return}
+            // just to adjust the duplicate but have to find a logical logic 
+            self.mediaAttachments.removeAll()
             Task{
                 await self.parsePhotoPickerItems(photos)
             }
@@ -118,6 +120,25 @@ final class ChatRoomViewModel : ObservableObject {
                     self.mediaAttachments.insert(photoAttachment, at: 0)
                 }
             }
+        }
+    }
+    
+    func dismissVideoPlayer() {
+        videoPlayerState.player?.replaceCurrentItem(with: nil)
+        videoPlayerState.player = nil
+        videoPlayerState.show = false
+    }
+    
+    func showMediaPlayer(_ fileUrl : URL){
+        videoPlayerState.show = true
+        videoPlayerState.player = AVPlayer(url: fileUrl)
+    }
+    
+    func handleMediaAttachmentPreview(_ action : MediaAttachmentPreview.userAction) {
+        switch action {
+        case .play(let attachment):
+            guard let fileUrl = attachment.fileUrl else { return }
+            showMediaPlayer(fileUrl)
         }
     }
 }
