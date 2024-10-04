@@ -23,11 +23,12 @@ struct ChatRoomScreen: View {
             leadingNavItems()
             trailingNavItems()
         }
-        .photosPicker(isPresented: $viewModel.showPhotoPicker, selection: $viewModel.photoPickerItems,maxSelectionCount: 12)
+        .photosPicker(isPresented: $viewModel.showPhotoPicker, selection: $viewModel.photoPickerItems,maxSelectionCount: 12,photoLibrary: .shared())
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom) {
             bottomSafeAreaView()
         }
+        .animation(.easeInOut, value: viewModel.showPhotoPickerPreview)
         .fullScreenCover(isPresented: $viewModel.videoPlayerState.show) {
             if let player = viewModel.videoPlayerState.player {
                 MediaPlayerView(player: player) {
