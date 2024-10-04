@@ -33,7 +33,7 @@ struct ChatRoomScreen: View {
     private func bottomSafeAreaView() -> some View {
         VStack(spacing: 0){
             if viewModel.showPhotoPickerPreview {
-                MediaAttachmentPreview(selectedPhoto: viewModel.selectedPhotos)
+                MediaAttachmentPreview(mediaAttachments: viewModel.mediaAttachments)
             }
             TextInputArea(textMessage: $viewModel.textMessage){action in 
                 viewModel.handleTextInputArea(action)

@@ -18,7 +18,7 @@ final class ChatRoomViewModel : ObservableObject {
     @Published var messages: [MessageItems] = []
     @Published var showPhotoPicker = false
     @Published var photoPickerItems : [PhotosPickerItem] = []
-    @Published var selectedPhotos : [UIImage] = []
+    @Published var mediaAttachments : [MediaAttachment] = []
     
     var showPhotoPickerPreview : Bool {
         return !photoPickerItems.isEmpty
@@ -97,12 +97,26 @@ final class ChatRoomViewModel : ObservableObject {
     
     private func parsePhotoPickerItems(_ items: [PhotosPickerItem]) async {
         for photo in items {
-            guard
-            let data = try? await photo.loadTransferable(type: Data.self),
-            let uiImage = UIImage(data:data)
-            else {return}
-            await MainActor.run {
-                self.selectedPhotos.insert(uiImage,at:0)
+            if photo.isVideo {
+                if let video = try? await photo.loadTransferable(type: videoPickerTransferable.self) {
+                    if let movie = try? await photo.loadTransferable(type: videoPickerTransferable.self),
+                       let thumbNailImage = try? await movie.url.generateThumbnail()
+                    {
+                        let videoAttachment = MediaAttachment(id: UUID().uuidString, type: .video(thumbNailImage, movie.url))
+                        await MainActor.run {
+                            self.mediaAttachments.insert(videoAttachment, at: 0)
+                        }
+                    }
+                }
+            }else{
+                guard
+                let data = try? await photo.loadTransferable(type: Data.self),
+                let thumbNail = UIImage(data:data)
+                else {return}
+                let photoAttachment = MediaAttachment(id: UUID().uuidString, type: .photo(thumbNail))
+                await MainActor.run {
+                    self.mediaAttachments.insert(photoAttachment, at: 0)
+                }
             }
         }
     }
