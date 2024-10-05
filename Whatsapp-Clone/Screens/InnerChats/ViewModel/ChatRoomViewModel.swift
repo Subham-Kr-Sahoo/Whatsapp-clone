@@ -20,6 +20,7 @@ final class ChatRoomViewModel : ObservableObject {
     @Published var photoPickerItems : [PhotosPickerItem] = []
     @Published var mediaAttachments : [MediaAttachment] = []
     @Published var videoPlayerState : (show: Bool, player: AVPlayer?) = (false,nil)
+    @Published var imageEditorState : (show:Bool ,image: UIImage?) = (false,nil)
     var showPhotoPickerPreview : Bool {
         return !photoPickerItems.isEmpty || !photoPickerItems.isEmpty
     }
@@ -136,6 +137,16 @@ final class ChatRoomViewModel : ObservableObject {
         videoPlayerState.player = AVPlayer(url: fileUrl)
     }
     
+    func showImageEditor(_ image : UIImage){
+        imageEditorState.show = true
+        imageEditorState.image = image
+    }
+    
+    func dismissImageEditor(){
+        imageEditorState.show = false
+        imageEditorState.image = nil
+    }
+    
     func handleMediaAttachmentPreview(_ action : MediaAttachmentPreview.userAction) {
         switch action {
         case .play(let attachment):
@@ -143,6 +154,9 @@ final class ChatRoomViewModel : ObservableObject {
             showMediaPlayer(fileUrl)
         case .remove(let attachment):
             remove(attachment)
+        case .edit(let attachment):
+            let image = attachment.thumbNail
+            showImageEditor(image)
         }
     }
     

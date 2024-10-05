@@ -51,7 +51,7 @@ struct MediaAttachmentPreview : View {
     
     private func imageButton(_ attachment: MediaAttachment) -> some View {
         Button{
-            
+            actionHandler(.edit(attachment))
         }label: {
             Image(systemName: "photo")
                 .scaledToFit()
@@ -142,6 +142,7 @@ extension MediaAttachmentPreview {
     enum userAction {
         case play(_ item: MediaAttachment)
         case remove (_ item : MediaAttachment)
+        case edit (_ item : MediaAttachment)
     }
 }
 

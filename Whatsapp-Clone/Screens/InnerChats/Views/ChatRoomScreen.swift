@@ -36,6 +36,14 @@ struct ChatRoomScreen: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $viewModel.imageEditorState.show){
+            if let image = viewModel.imageEditorState.image {
+                ImageEditingView(image: image) {
+                    // dismiss working
+                    viewModel.dismissImageEditor()
+                }
+            }
+        }
     }
     
     private func bottomSafeAreaView() -> some View {
