@@ -56,6 +56,7 @@
 		917560322CA747F200C0187E /* MessageItem+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917560312CA747F200C0187E /* MessageItem+Types.swift */; };
 		917560352CA9D00800C0187E /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917560342CA9D00800C0187E /* ChatRoomViewModel.swift */; };
 		9176D8882CB0ABA80034C9FE /* ImageEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9176D8872CB0ABA80034C9FE /* ImageEditingView.swift */; };
+		9176D88A2CB495CA0034C9FE /* AudioRecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9176D8892CB495CA0034C9FE /* AudioRecorderService.swift */; };
 		9178A1A92CB0940500EE3B6F /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9178A1A82CB0940500EE3B6F /* MediaPlayerView.swift */; };
 		917B6AF52C9B92F2009BE3E2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF42C9B92F2009BE3E2 /* FirebaseAuth */; };
 		917B6AF72C9B92F2009BE3E2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF62C9B92F2009BE3E2 /* FirebaseDatabase */; };
@@ -123,6 +124,7 @@
 		917560312CA747F200C0187E /* MessageItem+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageItem+Types.swift"; sourceTree = "<group>"; };
 		917560342CA9D00800C0187E /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		9176D8872CB0ABA80034C9FE /* ImageEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingView.swift; sourceTree = "<group>"; };
+		9176D8892CB495CA0034C9FE /* AudioRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderService.swift; sourceTree = "<group>"; };
 		9178A1A82CB0940500EE3B6F /* MediaPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
 		917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				910918142CA1B9E600580C3B /* UserService.swift */,
 				91FDF5492CA9D2F0001DE2AF /* MessageService.swift */,
+				9176D8892CB495CA0034C9FE /* AudioRecorderService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				9165D0C62CA05ED40054422E /* SelectedChatPartnerView.swift in Sources */,
 				9142F9762C98B9D8004531F8 /* SettingsTabScreen.swift in Sources */,
 				910884F32CB083E60015B77B /* PhotoPickerItem+Extension.swift in Sources */,
+				9176D88A2CB495CA0034C9FE /* AudioRecorderService.swift in Sources */,
 				91FDF5692CAB4EBE001DE2AF /* CircularProfileImageView.swift in Sources */,
 				9152A3292C9F138600B778AA /* FirebaseConstants.swift in Sources */,
 				9152A32D2C9F286D00B778AA /* ChatOptionsFromContactsView.swift in Sources */,
@@ -753,6 +757,7 @@
 				DEVELOPMENT_TEAM = R436SKTK44;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access to record the Voice message";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -782,6 +787,7 @@
 				DEVELOPMENT_TEAM = R436SKTK44;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access to record the Voice message";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
