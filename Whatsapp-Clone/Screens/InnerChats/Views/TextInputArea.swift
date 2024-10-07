@@ -10,14 +10,20 @@ import SwiftUI
 struct TextInputArea: View {
     @Binding var textMessage : String
     let actionHandler : (_ action : userAction) -> Void
+    @State private var isRecording : Bool = false
+    @State private var isPulsing = false
     private var disabledSendButton : Bool {
-        return textMessage.isEmptyOrWhiteSpace
+        return textMessage.isEmptyOrWhiteSpace || isRecording
     }
     var body: some View {
         HStack(alignment:.bottom,spacing: 8){
             imagePickerButton()
             audioRecorderButton()
-            messageTextField()
+            if isRecording {
+                audioSessionRecordingView()
+            }else{
+                messageTextField()
+            }
             sendMessageButton()
                 .disabled(disabledSendButton)
                 .grayscale(disabledSendButton ? 0.8 : 0)
@@ -26,7 +32,39 @@ struct TextInputArea: View {
         .padding(.horizontal,8)
         .padding(.top,10)
         .background(.whatsAppWhite)
+        .animation(.spring, value: isRecording)
     }
+    
+    private func audioSessionRecordingView() -> some View {
+        HStack{
+            Image(systemName: "circle.fill")
+                .foregroundStyle(Color.red)
+                .font(.caption)
+                .scaleEffect(isPulsing ? 1.5 : 1)
+            
+            Text("Recording Audio")
+                .font(.callout)
+                .lineLimit(1)
+            
+            Spacer()
+            
+            Text("00:01")
+                .font(.callout)
+                .fontWeight(.semibold)
+        }
+        .padding(.horizontal,8)
+        .frame(height: 30)
+        .frame(maxWidth: .infinity)
+        .clipShape(.capsule)
+        .background(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(Color.blue.opacity(0.1))
+        )
+        .overlay{
+            textViewBorder()
+        }
+    }
+    
     private func textViewBorder() -> some View {
         RoundedRectangle(cornerRadius: 20, style: .continuous)
             .stroke(Color(.systemGray5),lineWidth: 1)
@@ -73,14 +111,18 @@ struct TextInputArea: View {
     
     private func audioRecorderButton() -> some View {
         Button{
-            
+            actionHandler(.recordAudio)
+            isRecording.toggle()
+            withAnimation(.easeInOut(duration:1.5).repeatForever()){
+                isPulsing.toggle()
+            }
         }label: {
-            Image(systemName: "mic.fill")
+            Image(systemName:isRecording ? "square.fill" : "mic.fill")
                 .fontWeight(.heavy)
                 .imageScale(.small)
                 .foregroundStyle(.white)
                 .padding(6)
-                .background(.blue)
+                .background(isRecording ? .red : .blue)
                 .clipShape(.circle)
                 .padding(.horizontal,3)
         }
@@ -91,6 +133,7 @@ extension TextInputArea {
     enum userAction {
         case presentPhotoPicker
         case sendMessage
+        case recordAudio
     }
 }
 
