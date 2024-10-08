@@ -29,8 +29,8 @@ struct BubbleImageView: View {
             if item.direction == .received {Spacer()}
         }
         .padding(.horizontal, 10)
-        .padding(.leading,item.leadingPaddings-20)
-        .padding(.trailing,item.trailingPaddings)
+        .padding(.leading,item.leadingPaddings)
+        .padding(.trailing,item.trailingPaddings-10)
     }
     private func playButton() -> some View {
         Image(systemName: "play.fill")
@@ -48,7 +48,7 @@ struct BubbleImageView: View {
                 .resizable()
                 .placeholder {ProgressView()}
                 .scaledToFill()
-                .frame(width: 220,height: 180)
+                .frame(width: item.imageSize.width,height: item.imageSize.height)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .background{
                     (RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -67,7 +67,7 @@ struct BubbleImageView: View {
                 Text(item.text)
                     .padding([.horizontal,.bottom],8)
                     .frame(maxWidth: .infinity,alignment: .leading)
-                    .frame(width:220)
+                    .frame(width:item.imageSize.width)
             }
         }
         .background(item.backgroundColor)
