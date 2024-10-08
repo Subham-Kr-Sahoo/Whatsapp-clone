@@ -82,7 +82,15 @@ final class ChatRoomViewModel : ObservableObject {
         }else{
             // else it can be a image or video or audio or document(going to make it in future))
             sendMultipleMediaMessage(textMessage, attachments: mediaAttachments)
+            clearTextInputArea()
         }
+    }
+    
+    private func clearTextInputArea() {
+        mediaAttachments.removeAll()
+        photoPickerItems.removeAll()
+        textMessage = ""
+        UIApplication.dismissKeyboard()
     }
     
     private func sendMultipleMediaMessage(_ text:String, attachments: [MediaAttachment]){
