@@ -20,8 +20,9 @@ struct MessageItems : Identifiable {
     var sender : UserItems?
     let type : MessageType
     let timeStamp : Date
-    static let sentplaceholder = MessageItems(id:UUID().uuidString, groupChat: true,text: "HOLY MOLY",ownerUid: "1", type: .text,timeStamp: Date())
-    static let receiveplaceholder = MessageItems(id:UUID().uuidString, groupChat: false,text: "HOLY MOLY received",ownerUid: "2", type: .text,timeStamp: Date())
+    let thumbNailUrl : String?
+    static let sentplaceholder = MessageItems(id:UUID().uuidString, groupChat: true,text: "HOLY MOLY",ownerUid: "1", type: .text,timeStamp: Date(), thumbNailUrl: nil)
+    static let receiveplaceholder = MessageItems(id:UUID().uuidString, groupChat: false,text: "HOLY MOLY received",ownerUid: "2", type: .text,timeStamp: Date(), thumbNailUrl: nil)
     var alignment : Alignment {
         return direction == .received ? .leading : .trailing
     }
@@ -45,10 +46,10 @@ struct MessageItems : Identifiable {
     }
     
     static let stubMessages : [MessageItems] = [
-        MessageItems(id:UUID().uuidString, groupChat: true,text: "Hii there",ownerUid: "3",type: .text,timeStamp: Date()),
-        MessageItems(id:UUID().uuidString, groupChat: false,text: "Check this Photo",ownerUid: "4",  type: .photo,timeStamp: Date()),
-        MessageItems(id:UUID().uuidString, groupChat: true,text: "Play this Video", ownerUid: "5", type: .video,timeStamp: Date()),
-        MessageItems(id:UUID().uuidString, groupChat: false,text: "", ownerUid: "6", type: .audio,timeStamp: Date())
+        MessageItems(id:UUID().uuidString, groupChat: true,text: "Hii there",ownerUid: "3",type: .text,timeStamp: Date(), thumbNailUrl: nil),
+        MessageItems(id:UUID().uuidString, groupChat: false,text: "Check this Photo",ownerUid: "4",  type: .photo,timeStamp: Date(), thumbNailUrl: nil),
+        MessageItems(id:UUID().uuidString, groupChat: true,text: "Play this Video", ownerUid: "5", type: .video,timeStamp: Date(), thumbNailUrl: nil),
+        MessageItems(id:UUID().uuidString, groupChat: false,text: "", ownerUid: "6", type: .audio,timeStamp: Date(), thumbNailUrl: nil)
     ]
 }
 extension MessageItems {
@@ -61,6 +62,7 @@ extension MessageItems {
         self.ownerUid = dict[.ownerUid] as? String ?? ""
         let timeInterval = dict[.timeStamp] as? TimeInterval ?? 0
         self.timeStamp = Date(timeIntervalSince1970: timeInterval)
+        self.thumbNailUrl = dict[.thumbNailUrl] as? String ?? nil
     }
 }
 
@@ -69,4 +71,6 @@ extension String {
     static let timeStamp = "timeStamp"
     static let ownerUid = "ownerUid"
     static let text = "text"
+    static let thumbNailWidth = "thumbNailWidth"
+    static let thumbNailHeight = "thumbNailHeight"
 }

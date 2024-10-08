@@ -58,6 +58,8 @@
 		9176D8882CB0ABA80034C9FE /* ImageEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9176D8872CB0ABA80034C9FE /* ImageEditingView.swift */; };
 		9176D88A2CB495CA0034C9FE /* AudioRecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9176D8892CB495CA0034C9FE /* AudioRecorderService.swift */; };
 		9176D88C2CB4FD210034C9FE /* TimeInterval + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9176D88B2CB4FD210034C9FE /* TimeInterval + Extension.swift */; };
+		9176D88F2CB55F6B0034C9FE /* Future.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9176D88E2CB55F6B0034C9FE /* Future.txt */; };
+		9176D8912CB582820034C9FE /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9176D8902CB582820034C9FE /* FirebaseHelper.swift */; };
 		9178A1A92CB0940500EE3B6F /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9178A1A82CB0940500EE3B6F /* MediaPlayerView.swift */; };
 		917B6AF52C9B92F2009BE3E2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF42C9B92F2009BE3E2 /* FirebaseAuth */; };
 		917B6AF72C9B92F2009BE3E2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 917B6AF62C9B92F2009BE3E2 /* FirebaseDatabase */; };
@@ -127,6 +129,8 @@
 		9176D8872CB0ABA80034C9FE /* ImageEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingView.swift; sourceTree = "<group>"; };
 		9176D8892CB495CA0034C9FE /* AudioRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderService.swift; sourceTree = "<group>"; };
 		9176D88B2CB4FD210034C9FE /* TimeInterval + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval + Extension.swift"; sourceTree = "<group>"; };
+		9176D88E2CB55F6B0034C9FE /* Future.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Future.txt; sourceTree = "<group>"; };
+		9176D8902CB582820034C9FE /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		9178A1A82CB0940500EE3B6F /* MediaPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
 		917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		917B6B022C9D9C76009BE3E2 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				917B6AFC2C9B94F1009BE3E2 /* GoogleService-Info.plist */,
 				910A2DCF2C97955D00C3EACA /* Assets.xcassets */,
 				910A2DD12C97955D00C3EACA /* Preview Content */,
+				9176D88E2CB55F6B0034C9FE /* Future.txt */,
 			);
 			path = "Whatsapp-Clone";
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				9142F9902C9A2EAE004531F8 /* CustomModifiers.swift */,
+				9176D8902CB582820034C9FE /* FirebaseHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 				910A2DD32C97955D00C3EACA /* Preview Assets.xcassets in Resources */,
 				910A2DD02C97955D00C3EACA /* Assets.xcassets in Resources */,
 				917B6AFD2C9B94F1009BE3E2 /* GoogleService-Info.plist in Resources */,
+				9176D88F2CB55F6B0034C9FE /* Future.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9176D8912CB582820034C9FE /* FirebaseHelper.swift in Sources */,
 				910A2DDC2C982A2600C3EACA /* UpdatesTabScreen.swift in Sources */,
 				9152A3182C9E2C2900B778AA /* AuthScreenModel.swift in Sources */,
 				9152A3132C9E21C700B778AA /* AuthButton.swift in Sources */,

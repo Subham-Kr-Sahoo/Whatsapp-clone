@@ -1,0 +1,8 @@
+
+
+1) make sure to sort the channels on the basis of the all,group,unread - i have the logic i should create a enum and then i should find way to do
+2) AI Page
+3) make sure all searchables are working fine
+4) photo editor - i am in a lot of doubt to do that
+5) document sending...
+

@@ -43,4 +43,54 @@ struct MessageService {
             print("\(error.localizedDescription)")
         }
     }
+    
+    static func sendMediaMessage(to channel: ChatItem, params: MessageUploadParams, completion: @escaping ()->Void){
+        guard let messageId = FirebaseConstants.messagesRef.childByAutoId().key else { return }
+        let timeStamp = Date().timeIntervalSince1970
+        let channelDict : [String:Any] = [
+            .lastMessage : params.text,
+            .lastMessageTimeStamp : timeStamp,
+            .lastMessageType : params.type.title
+        ]
+        var messageDict : [String:Any] = [
+            .text:params.text,
+            .type:params.type.title,
+            .timeStamp : timeStamp,
+            .ownerUid: params.ownerUid,
+        ]
+        // photo messages
+        messageDict[.thumbNailUrl] = params.thumbNailURL ?? nil
+        messageDict[.thumbNailWidth] = params.thumbNailWidth ?? nil
+        messageDict[.thumbNailHeight] = params.thumbNailHeight ?? nil
+        
+        FirebaseConstants.channelsRef.child(channel.id).updateChildValues(channelDict)
+        FirebaseConstants.messagesRef.child(channel.id).child(messageId).setValue(messageDict)
+        
+        completion()
+    }
+}
+
+struct MessageUploadParams {
+    let channel : ChatItem
+    let text : String
+    let type: MessageType
+    let attachment: MediaAttachment
+    var thumbNailURL: String?
+    var videoUrl: String?
+    var sender: UserItems
+    var audioUrl: URL?
+    var audioDuration: TimeInterval?
+    
+    var ownerUid : String {
+        return sender.uid
+    }
+    
+    var thumbNailWidth: CGFloat?{
+        guard type == .photo || type == .video else { return nil }
+        return attachment.thumbNail.size.width
+    }
+    var thumbNailHeight: CGFloat?{
+        guard type == .photo || type == .video else { return nil }
+        return attachment.thumbNail.size.height
+    }
 }

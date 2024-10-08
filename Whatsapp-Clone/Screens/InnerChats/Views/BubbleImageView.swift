@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct BubbleImageView: View {
     let item: MessageItems
@@ -43,9 +44,10 @@ struct BubbleImageView: View {
     
     private func messageTextView() -> some View {
         VStack(alignment:.leading){
-            Image(.stubImage1)
+            KFImage(URL(string: item.thumbNailUrl ?? ""))
                 .resizable()
-                .scaledToFit()
+                .placeholder {ProgressView()}
+                .scaledToFill()
                 .frame(width: 220,height: 180)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .background{
@@ -65,7 +67,7 @@ struct BubbleImageView: View {
                 Text(item.text)
                     .padding([.horizontal,.bottom],8)
                     .frame(maxWidth: .infinity,alignment: .leading)
-                    .frame(width:200)
+                    .frame(width:220)
             }
         }
         .background(item.backgroundColor)
@@ -90,13 +92,14 @@ struct BubbleImageView: View {
     
     private func timeStampTextView() -> some View {
         HStack{
-            Text("09:09 PM")
+            Text(item.timeStamp.formatToTime)
                 .font(.system(size: 12))
             if item.direction == .sent {
                 Image(.seen)
                     .resizable()
                     .renderingMode(.template)
                     .frame(width:15,height:15)
+                    .foregroundStyle(Color.blue)
             }
         }
         .padding(.vertical,3)
