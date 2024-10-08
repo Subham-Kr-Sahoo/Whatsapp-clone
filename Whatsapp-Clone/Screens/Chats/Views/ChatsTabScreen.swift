@@ -10,6 +10,8 @@ import SwiftUI
 struct ChatsTabScreen: View {
     @State private var searchText = ""
     @StateObject private var viewModel : ChatTabViewModel
+    @State private var showSheet = false
+    @Environment(\.colorScheme) private var colorScheme
     init(_ currentUser: UserItems){
         self._viewModel = StateObject(wrappedValue: ChatTabViewModel(currentUser))
     }
@@ -157,12 +159,19 @@ extension ChatsTabScreen {
     private func inboxFooterView() -> some View {
         HStack{
             Image(systemName: "lock.fill")
-            (
-            Text("Your personal messages are ")
-            +
-            Text("end-to-end encrypted")
-                .foregroundStyle(.blue)
-            )
+            Text("Your personal messages are")
+            Button{
+                showSheet = true
+            }label: {
+                Text("end-to-end encrypted")
+                    .foregroundStyle(.blue)
+            }
+            .sheet(isPresented: $showSheet) {
+                sheetView(colorScheme: colorScheme)
+                    .foregroundStyle(Color.whatsAppBlack)
+                    .presentationDetents([.fraction(0.85)])
+            }
+            .padding(.leading,-4)
         }
         .foregroundStyle(.gray)
         .font(.caption)

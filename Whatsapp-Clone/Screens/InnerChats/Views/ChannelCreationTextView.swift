@@ -40,7 +40,7 @@ struct ChannelCreationTextView: View {
             }
         }
         .sheet(isPresented: $showSheet) {
-            sheetView()
+            sheetView(colorScheme: colorScheme)
                 .presentationDetents([.fraction(0.85)])
         }
         
@@ -49,7 +49,7 @@ struct ChannelCreationTextView: View {
 
 struct sheetView : View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
+    let colorScheme: ColorScheme
     private var backgroundColor:Color {
         return colorScheme == .dark ? .black.opacity(0.7) : .gray.opacity(0.9)
     }
@@ -142,5 +142,4 @@ struct sheetView : View {
 
 #Preview {
     ChannelCreationTextView()
-    //sheetView()
 }
