@@ -40,8 +40,8 @@ struct MediaAttachment : Identifiable {
             return nil
         case .video(_, let fileUrl):
             return fileUrl
-        case .audio:
-            return nil
+        case .audio(let url, _):
+            return url
         }
     }
 }
@@ -49,7 +49,7 @@ struct MediaAttachment : Identifiable {
 enum mediaAttachmentType : Equatable {
     case photo(_ thumbNail : UIImage)
     case video(_ thumbNail : UIImage, _ url : URL)
-    case audio
+    case audio(_ URL : URL, _ duration : TimeInterval)
     
     static func == (lhs: mediaAttachmentType , rhs: mediaAttachmentType) -> Bool {
         switch (lhs, rhs) {

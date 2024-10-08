@@ -15,7 +15,7 @@ struct MediaAttachmentPreview : View {
         ScrollView(.horizontal,showsIndicators: false){
             HStack{
                 ForEach(mediaAttachments){attachment in
-                    if attachment.type == .audio {
+                    if attachment.type == .audio(.stubUrl,.stubTimeInterval) {
                         audioAttachmentView(attachment)
                     }else{
                         thumbNailImageView(attachment)
@@ -126,7 +126,7 @@ struct MediaAttachmentPreview : View {
             microPhoneButton("mic.fill", attachment: attachment)
         }
         .overlay(alignment:.bottomLeading){
-            Text("Hello World Music creation")
+            Text(attachment.fileUrl?.absoluteString ?? "Unknown Url")
                 .lineLimit(1)
                 .font(.caption)
                 .padding(2)

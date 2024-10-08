@@ -21,6 +21,8 @@ final class ChatRoomViewModel : ObservableObject {
     @Published var mediaAttachments : [MediaAttachment] = []
     @Published var videoPlayerState : (show: Bool, player: AVPlayer?) = (false,nil)
     @Published var imageEditorState : (show:Bool ,image: UIImage?) = (false,nil)
+    @Published var isRecordingVoiceMesaage : Bool = false
+    @Published var elapsedVoiceMessageTime : TimeInterval = 0
     private let audioRecorderService = AudioRecorderService()
     var showPhotoPickerPreview : Bool {
         return !mediaAttachments.isEmpty || !photoPickerItems.isEmpty
@@ -29,6 +31,7 @@ final class ChatRoomViewModel : ObservableObject {
         self.chat = chat
         listenToAuthState()
         onPhotoPickerSelection()
+        setUpVoiceRecorderListener()
     }
     deinit {
         subscription.forEach{
@@ -36,6 +39,7 @@ final class ChatRoomViewModel : ObservableObject {
         }
         subscription.removeAll()
         currentUser = nil
+        audioRecorderService.tearDown()
     }
     private func listenToAuthState() {
         AuthManager.shared.authState.receive (on: DispatchQueue.main).sink {[weak self] authState in
@@ -54,17 +58,30 @@ final class ChatRoomViewModel : ObservableObject {
             }
         }.store(in: &subscription)
     }
+    
+    private func setUpVoiceRecorderListener(){
+        audioRecorderService.$isRecording.receive(on: DispatchQueue.main).sink { [weak self] isRecording in
+            self?.isRecordingVoiceMesaage = isRecording
+        }.store(in: &subscription)
+        
+        audioRecorderService.$elapsedTime.receive(on: DispatchQueue.main).sink { [weak self] elapsedTime in
+            self?.elapsedVoiceMessageTime = elapsedTime
+        }.store(in: &subscription)
+    }
+    
     func sendMessage() {
         guard let currentUser else { return }
         MessageService.sendTextMessage(to: chat, from: currentUser, textMessage) {[weak self] in
             self?.textMessage = ""
         }
     }
+    
     private func getMessage(){
         MessageService.getMessage(for: chat) { [weak self] messages in
             self?.messages = messages
         }
     }
+    
     private func getAllChannelMembers() {
         guard let currentUser = currentUser else {return}
         let membersAlreadyfetched = chat.members.compactMap{$0.uid}
@@ -102,9 +119,9 @@ final class ChatRoomViewModel : ObservableObject {
     }
     
     private func createAudioAttachment(from audioUrl : URL?,_ audioDuration:TimeInterval){
-        guard audioUrl != nil else {return}
+        guard let audioUrl = audioUrl else {return}
         let id = UUID().uuidString
-        let audioAttachment = MediaAttachment(id: id, type: .audio)
+        let audioAttachment = MediaAttachment(id: id, type: .audio(audioUrl,audioDuration))
         mediaAttachments.insert(audioAttachment, at: 0)
     }
     
@@ -112,7 +129,9 @@ final class ChatRoomViewModel : ObservableObject {
         $photoPickerItems.sink { [weak self] photos in
             guard let self = self else {return}
             // just to adjust the duplicate but have to find a logical logic 
-            self.mediaAttachments.removeAll()
+//            self.mediaAttachments.removeAll()
+            let audioRecordings = mediaAttachments.filter({ $0.type == .audio(.stubUrl,.stubTimeInterval) })
+            self.mediaAttachments = audioRecordings
             Task{
                 await self.parsePhotoPickerItems(photos)
             }
@@ -176,6 +195,10 @@ final class ChatRoomViewModel : ObservableObject {
             showMediaPlayer(fileUrl)
         case .remove(let attachment):
             remove(attachment)
+            guard let fileUrl = attachment.fileUrl else { return }
+            if attachment.type == .audio(.stubUrl,.stubTimeInterval){
+                audioRecorderService.deleteRecording(at: fileUrl)
+            }
         case .edit(let attachment):
             let image = attachment.thumbNail
             showImageEditor(image)

@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct TextInputArea: View {
-    @Binding var textMessage : String
-    let actionHandler : (_ action : userAction) -> Void
-    @State private var isRecording : Bool = false
     @State private var isPulsing = false
+    @Binding var textMessage : String
+    @Binding var isRecording : Bool
+    @Binding var elapsedTime : TimeInterval
+    let actionHandler : (_ action : userAction) -> Void
     private var disabledSendButton : Bool {
         return textMessage.isEmptyOrWhiteSpace || isRecording
     }
     var body: some View {
         HStack(alignment:.bottom,spacing: 8){
             imagePickerButton()
+                .disabled(isRecording)
+                .grayscale(isRecording ? 0.8 : 0)
             audioRecorderButton()
             if isRecording {
                 audioSessionRecordingView()
@@ -33,6 +36,15 @@ struct TextInputArea: View {
         .padding(.top,10)
         .background(.whatsAppWhite)
         .animation(.spring, value: isRecording)
+        .onChange(of: isRecording) { oldValue,newValue in
+            if newValue {
+                withAnimation(.easeInOut(duration:1.5).repeatForever()){
+                    isPulsing = true
+                }
+            }else{
+                isPulsing = false
+            }
+        }
     }
     
     private func audioSessionRecordingView() -> some View {
@@ -48,7 +60,7 @@ struct TextInputArea: View {
             
             Spacer()
             
-            Text("00:01")
+            Text(elapsedTime.formatElapsedTime)
                 .font(.callout)
                 .fontWeight(.semibold)
         }
@@ -113,9 +125,6 @@ struct TextInputArea: View {
         Button{
             actionHandler(.recordAudio)
             isRecording.toggle()
-            withAnimation(.easeInOut(duration:1.5).repeatForever()){
-                isPulsing.toggle()
-            }
         }label: {
             Image(systemName:isRecording ? "square.fill" : "mic.fill")
                 .fontWeight(.heavy)
@@ -138,7 +147,7 @@ extension TextInputArea {
 }
 
 #Preview {
-    TextInputArea(textMessage: .constant("")){action in 
+    TextInputArea(textMessage: .constant(""), isRecording: .constant(false), elapsedTime: .constant(0)) { action in
         
     }
 }

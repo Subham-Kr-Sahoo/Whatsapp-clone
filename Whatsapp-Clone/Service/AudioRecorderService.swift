@@ -11,10 +11,15 @@ import Combine
 
 final class AudioRecorderService { 
     private var audioRecorder : AVAudioRecorder?
-    private(set) var isRecording : Bool = false
     private var startTime : Date?
     private var timer : AnyCancellable?
-    private var elapsedTime : TimeInterval = 0
+    @Published private(set) var isRecording : Bool = false
+    @Published private(set) var elapsedTime : TimeInterval = 0
+    
+    deinit{
+        tearDown()
+    }
+    
     func startRecording() {
         // record the audio
         let audioSession = AVAudioSession.sharedInstance()
@@ -66,6 +71,7 @@ final class AudioRecorderService {
     }
     
     func tearDown() {
+        if isRecording {stopRecording()}
         let fileManager = FileManager.default
         let folder = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let folderContent = try! fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
@@ -78,9 +84,10 @@ final class AudioRecorderService {
         }
     }
     
-    private func deleteRecording(at fileUrl: URL){
+    func deleteRecording(at fileUrl: URL){
         do{
             try FileManager.default.removeItem(at: fileUrl)
+            print("file was deleted at \(fileUrl)")
         }catch{
             print("Failed to delete the recording")
         }

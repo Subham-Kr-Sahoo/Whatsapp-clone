@@ -53,7 +53,11 @@ struct ChatRoomScreen: View {
                     viewModel.handleMediaAttachmentPreview(action)
                 }
             }
-            TextInputArea(textMessage: $viewModel.textMessage){action in 
+            TextInputArea(
+                textMessage: $viewModel.textMessage,
+                isRecording: $viewModel.isRecordingVoiceMesaage,
+                elapsedTime: $viewModel.elapsedVoiceMessageTime
+            ){action in 
                 viewModel.handleTextInputArea(action)
             }
         }
