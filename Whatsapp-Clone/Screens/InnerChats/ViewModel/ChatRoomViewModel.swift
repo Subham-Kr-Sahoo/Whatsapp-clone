@@ -23,7 +23,7 @@ final class ChatRoomViewModel : ObservableObject {
     @Published var imageEditorState : (show:Bool ,image: UIImage?) = (false,nil)
     private let audioRecorderService = AudioRecorderService()
     var showPhotoPickerPreview : Bool {
-        return !photoPickerItems.isEmpty || !photoPickerItems.isEmpty
+        return !mediaAttachments.isEmpty || !photoPickerItems.isEmpty
     }
     init(_ chat: ChatItem) {
         self.chat = chat
