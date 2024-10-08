@@ -20,9 +20,10 @@ final class ChatRoomViewModel : ObservableObject {
     @Published var photoPickerItems : [PhotosPickerItem] = []
     @Published var mediaAttachments : [MediaAttachment] = []
     @Published var videoPlayerState : (show: Bool, player: AVPlayer?) = (false,nil)
-    @Published var imageEditorState : (show:Bool ,image: UIImage?) = (false,nil)
+    @Published var imageEditorState : (show: Bool ,image: UIImage?) = (false,nil)
     @Published var isRecordingVoiceMesaage : Bool = false
     @Published var elapsedVoiceMessageTime : TimeInterval = 0
+    @Published var scrollToBottomRequest : (scroll: Bool ,isAnimated: Bool) = (false,false)
     private let audioRecorderService = AudioRecorderService()
     var showPhotoPickerPreview : Bool {
         return !mediaAttachments.isEmpty || !photoPickerItems.isEmpty
@@ -78,12 +79,18 @@ final class ChatRoomViewModel : ObservableObject {
             // it has to be a text message
             MessageService.sendTextMessage(to: chat, from: currentUser, textMessage) {[weak self] in
                 self?.textMessage = ""
+                self?.scrollToBottom(isAnimated: true)
             }
         }else{
             // else it can be a image or video or audio or document(going to make it in future))
             sendMultipleMediaMessage(textMessage, attachments: mediaAttachments)
             clearTextInputArea()
         }
+    }
+    
+    private func scrollToBottom(isAnimated: Bool){
+        scrollToBottomRequest.scroll = true
+        scrollToBottomRequest.isAnimated = isAnimated
     }
     
     private func clearTextInputArea() {
@@ -117,8 +124,9 @@ final class ChatRoomViewModel : ObservableObject {
                                                    attachment: attachment,
                                                    thumbNailURL: imageUrl.absoluteString,
                                                    sender: currentUser)
-            MessageService.sendMediaMessage(to: chat, params: uploadParams) {
+            MessageService.sendMediaMessage(to: chat, params: uploadParams) {[weak self] in
                 // TODO: scroll to bottom upon upload success
+                self?.scrollToBottom(isAnimated: true)
             }
         }
         

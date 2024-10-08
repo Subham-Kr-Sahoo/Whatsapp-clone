@@ -119,4 +119,4 @@ struct BubbleImageView: View {
     .frame(maxWidth: .infinity)
     .background(.black)
 }
- 
+
