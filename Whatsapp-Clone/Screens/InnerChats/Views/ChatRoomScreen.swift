@@ -44,6 +44,14 @@ struct ChatRoomScreen: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $viewModel.imagePreviewState.show) {
+            let text = viewModel.imagePreviewState.text
+            if let image = viewModel.imagePreviewState.image {
+                ImagePreviewView(text: text, image: image) {
+                    viewModel.dismissImagePreview()
+                }
+            }
+        }
     }
     
     private func bottomSafeAreaView() -> some View {

@@ -24,6 +24,7 @@ final class ChatRoomViewModel : ObservableObject {
     @Published var isRecordingVoiceMesaage : Bool = false
     @Published var elapsedVoiceMessageTime : TimeInterval = 0
     @Published var scrollToBottomRequest : (scroll: Bool ,isAnimated: Bool) = (false,false)
+    @Published var imagePreviewState : (show: Bool, image: String?, text: String) = (false,nil,"")
     private let audioRecorderService = AudioRecorderService()
     var showPhotoPickerPreview : Bool {
         return !mediaAttachments.isEmpty || !photoPickerItems.isEmpty
@@ -296,6 +297,18 @@ final class ChatRoomViewModel : ObservableObject {
     func dismissImageEditor(){
         imageEditorState.show = false
         imageEditorState.image = nil
+    }
+    
+    func showImagePreview(_ image : String, _ text : String){
+        imagePreviewState.show = true
+        imagePreviewState.image = image
+        imagePreviewState.text = text
+    }
+    
+    func dismissImagePreview(){
+        imagePreviewState.show = false
+        imagePreviewState.image = nil
+        imagePreviewState.text = ""
     }
     
     func handleMediaAttachmentPreview(_ action : MediaAttachmentPreview.userAction) {

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 import Combine
+import Kingfisher
 
 final class MessageListController : UIViewController {
     override func viewDidLoad() {
@@ -116,6 +117,41 @@ extension MessageListController : UITableViewDelegate , UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIApplication.dismissKeyboard()
+        let message = viewModel.messages[indexPath.row]
+        switch message.type {
+        case .video:
+            guard let videoUrl = message.videoUrl, let videoURL = URL(string: videoUrl) else {return}
+            viewModel.showMediaPlayer(videoURL)
+        case .photo:
+            guard let photo = message.thumbNailUrl
+            else {return}
+            let text = message.text
+            viewModel.showImagePreview(photo, text)
+        default:
+            break
+        }
+    }
+    
+    func loadImageFromUrl(urlString: String,completion: @escaping (UIImage?) -> Void){
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error downloading image: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            guard let data = data, let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+            completion(image)
+        }.resume()
     }
 }
 

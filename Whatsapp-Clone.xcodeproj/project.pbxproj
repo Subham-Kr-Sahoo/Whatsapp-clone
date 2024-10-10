@@ -17,6 +17,7 @@
 		910A2DD32C97955D00C3EACA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910A2DD22C97955D00C3EACA /* Preview Assets.xcassets */; };
 		910A2DDA2C979B7100C3EACA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DD92C979B7000C3EACA /* MainTabView.swift */; };
 		910A2DDC2C982A2600C3EACA /* UpdatesTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DDB2C982A2600C3EACA /* UpdatesTabScreen.swift */; };
+		910C5B7C2CB850B50097D8F1 /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910C5B7B2CB850B50097D8F1 /* ImagePreviewView.swift */; };
 		9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9602C983D95004531F8 /* CallTabScreen.swift */; };
 		9142F96E2C984D48004531F8 /* CommunityTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */; };
 		9142F9712C989ED4004531F8 /* ChatsTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9702C989ED4004531F8 /* ChatsTabScreen.swift */; };
@@ -91,6 +92,7 @@
 		910A2DD22C97955D00C3EACA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		910A2DD92C979B7000C3EACA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		910A2DDB2C982A2600C3EACA /* UpdatesTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTabScreen.swift; sourceTree = "<group>"; };
+		910C5B7B2CB850B50097D8F1 /* ImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
 		9142F9602C983D95004531F8 /* CallTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTabScreen.swift; sourceTree = "<group>"; };
 		9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTabScreen.swift; sourceTree = "<group>"; };
 		9142F9702C989ED4004531F8 /* ChatsTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTabScreen.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				91FDF5682CAB4EBE001DE2AF /* CircularProfileImageView.swift */,
 				9178A1A82CB0940500EE3B6F /* MediaPlayerView.swift */,
 				9176D8872CB0ABA80034C9FE /* ImageEditingView.swift */,
+				910C5B7B2CB850B50097D8F1 /* ImagePreviewView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				9142F9712C989ED4004531F8 /* ChatsTabScreen.swift in Sources */,
 				9152A31F2C9E529700B778AA /* RoutesView.swift in Sources */,
 				917B6B032C9D9C76009BE3E2 /* LoginScreen.swift in Sources */,
+				910C5B7C2CB850B50097D8F1 /* ImagePreviewView.swift in Sources */,
 				91FDF56B2CAB57AD001DE2AF /* Date+Extension.swift in Sources */,
 				91FDF54C2CAA0DD5001DE2AF /* ChannelCreationTextView.swift in Sources */,
 				9142F9872C99F9DB004531F8 /* MessageListView.swift in Sources */,
