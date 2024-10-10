@@ -198,7 +198,6 @@ struct ImagePreviewView: View {
                 .bold()
         }
     }
-    
 }
 
 #Preview {
