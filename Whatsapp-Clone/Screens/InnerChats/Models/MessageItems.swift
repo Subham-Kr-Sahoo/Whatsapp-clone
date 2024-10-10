@@ -23,6 +23,7 @@ struct MessageItems : Identifiable {
     let thumbNailUrl : String?
     var thumbNailHeight : CGFloat?
     var thumbNailWidth: CGFloat?
+    var videoUrl : String?
     static let sentplaceholder = MessageItems(id:UUID().uuidString, groupChat: true,text: "HOLY MOLY",ownerUid: "1", type: .text,timeStamp: Date(), thumbNailUrl: nil)
     static let receiveplaceholder = MessageItems(id:UUID().uuidString, groupChat: false,text: "HOLY MOLY received",ownerUid: "2", type: .text,timeStamp: Date(), thumbNailUrl: nil)
     var alignment : Alignment {
@@ -78,6 +79,7 @@ extension MessageItems {
         self.thumbNailUrl = dict[.thumbNailUrl] as? String ?? nil
         self.thumbNailWidth = dict[.thumbNailWidth] as? CGFloat ?? 0
         self.thumbNailHeight = dict[.thumbNailHeight] as? CGFloat ?? 0
+        self.videoUrl = dict[.videoUrl] as? String ?? nil
     }
 }
 
@@ -88,4 +90,5 @@ extension String {
     static let text = "text"
     static let thumbNailWidth = "thumbNailWidth"
     static let thumbNailHeight = "thumbNailHeight"
+    static let videoUrl = "videoUrl"
 }
