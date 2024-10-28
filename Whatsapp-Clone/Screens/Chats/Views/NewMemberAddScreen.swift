@@ -22,7 +22,7 @@ struct NewMemberAddScreen: View {
                 HeaderView(item: .newContact)
                 HeaderView(item: .newCommuity)
                 Section{
-                    ForEach(viewModel.users) {user in
+                    ForEach(viewModel.users.sorted {$0.id < $1.id}) {user in
                         ChatOptionsFromContactsView(user: user)
                             .onTapGesture {
                                 viewModel.createDirectChannel(user, completion: onCreate)

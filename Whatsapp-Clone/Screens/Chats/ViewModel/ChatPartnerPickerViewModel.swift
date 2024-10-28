@@ -27,7 +27,7 @@ enum channelCreationError: Error {
 final class ChatPartnerPickerViewModel : ObservableObject {
     @Published var navStack = [chatCreationRoute]()
     @Published var selectedChatPartner = [UserItems]()
-    @Published private(set) var users = [UserItems]()
+    @Published private(set) var users = Set<UserItems>()
     @Published var errorState : (showError: Bool, errorMessage: String) = (false,"Error")
     private var lastCursor : String?
     private var subscription: AnyCancellable?
@@ -72,7 +72,9 @@ final class ChatPartnerPickerViewModel : ObservableObject {
             var fetchedUsers = userNode.users
             guard let currentUid = Auth.auth().currentUser?.uid else {return}
             fetchedUsers = fetchedUsers.filter {$0.uid != currentUid} // isme kya ho rha he kie : user khud ko dekh paa rha tha group add member me lekin woh nhi hona chaiye so yeh logic usko bachata he
-            self.users.append(contentsOf: fetchedUsers)
+            for fetchedUser in fetchedUsers {
+                self.users.insert(fetchedUser) //fetchedUsers mujhe ek array de rha he so me kya kar rha hu kie array ko traverse then push it into set , so duplicates are get removed 
+            }
             self.lastCursor = userNode.currentCursor
         }catch{
             print("Failed to fetch users...")

@@ -18,7 +18,7 @@ struct AddMemberstoGroupChat: View {
                 }
             }
             Section{
-                ForEach(viewModel.users) { item in
+                ForEach(viewModel.users.sorted {$0.id < $1.id}) { item in
                     Button{
                         viewModel.handleItemSelection(item)
                     }label: {
