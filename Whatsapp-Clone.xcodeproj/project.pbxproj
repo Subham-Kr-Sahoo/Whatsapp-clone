@@ -122,7 +122,7 @@
 		9152A3282C9F138600B778AA /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		9152A32A2C9F252F00B778AA /* NewMemberAddScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemberAddScreen.swift; sourceTree = "<group>"; };
 		9152A32C2C9F286D00B778AA /* ChatOptionsFromContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOptionsFromContactsView.swift; sourceTree = "<group>"; };
-		9152A32F2CA0524600B778AA /* ChatPartnerPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPartnerPickerViewModel.swift; sourceTree = "<group>"; };
+		9152A32F2CA0524600B778AA /* ChatPartnerPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPartnerPickerViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9152A3332CA0547C00B778AA /* AddMemberstoGroupChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberstoGroupChat.swift; sourceTree = "<group>"; };
 		9165D0C52CA05ED40054422E /* SelectedChatPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedChatPartnerView.swift; sourceTree = "<group>"; };
 		9165D0C72CA06EF10054422E /* NewGroupSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupSetupView.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		917560292CA617D800C0187E /* ChatTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTabViewModel.swift; sourceTree = "<group>"; };
 		9175602E2CA6224D00C0187E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		917560312CA747F200C0187E /* MessageItem+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageItem+Types.swift"; sourceTree = "<group>"; };
-		917560342CA9D00800C0187E /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
+		917560342CA9D00800C0187E /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9176D8872CB0ABA80034C9FE /* ImageEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingView.swift; sourceTree = "<group>"; };
 		9176D8892CB495CA0034C9FE /* AudioRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderService.swift; sourceTree = "<group>"; };
 		9176D88B2CB4FD210034C9FE /* TimeInterval + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval + Extension.swift"; sourceTree = "<group>"; };

@@ -64,9 +64,11 @@ final class ChatPartnerPickerViewModel : ObservableObject {
             }
         }
     }
+    
     func fetchUsers() async {
         do{
             let userNode = try await UserService.paginateUsers(lastCursor: lastCursor, pageSize: 10)
+            // here the users page is constantly fetching the duplicates , i dont know why may be some where users from groupMember arrays are mixing in it or something else is happening , i have to give it time to check it
             var fetchedUsers = userNode.users
             guard let currentUid = Auth.auth().currentUser?.uid else {return}
             fetchedUsers = fetchedUsers.filter {$0.uid != currentUid} // isme kya ho rha he kie : user khud ko dekh paa rha tha group add member me lekin woh nhi hona chaiye so yeh logic usko bachata he

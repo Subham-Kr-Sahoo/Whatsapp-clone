@@ -15,6 +15,7 @@ struct ChatsTabScreen: View {
     init(_ currentUser: UserItems){
         self._viewModel = StateObject(wrappedValue: ChatTabViewModel(currentUser))
     }
+    @State private var whichType : type = .all
     var body: some View {
         NavigationStack{
             HStack {
@@ -25,7 +26,7 @@ struct ChatsTabScreen: View {
             }.padding(.leading)
             List{
                 archivedButton()
-                ForEach(viewModel.channels){channel in
+                ForEach(handleType(whichType)){channel in
                     NavigationLink{
                         ChatRoomScreen(channel: channel)
                     } label: {
@@ -55,45 +56,69 @@ struct ChatsTabScreen: View {
     
     private func allChatButton() -> some View {
         Button{
-            
+            withAnimation(.easeInOut) {
+                whichType = .all
+            }
         }label: {
             Text("All")
                 .font(.callout)
-                .foregroundStyle(.whatsAppBlack)
+                .foregroundStyle(whichType == .all ? .white : .whatsAppBlack)
                 .padding(.horizontal,12)
                 .padding(.vertical,5)
-                .background(Color.gray.opacity(0.4))
+                .background(whichType == .all ? Color.blue.opacity(0.8) : Color.gray.opacity(0.4))
                 .clipShape(.capsule)
         }
     }
     
     private func unreadChatButton() -> some View{
         Button{
-            
+            withAnimation(.easeInOut) {
+                whichType = .unread
+            }
         }label: {
             Text("Unread")
                 .font(.callout)
-                .foregroundStyle(.whatsAppBlack)
+                .foregroundStyle(whichType == .unread ? .white : .whatsAppBlack)
                 .padding(.horizontal,12)
                 .padding(.vertical,5)
-                .background(Color.gray.opacity(0.4))
+                .background(whichType == .unread ? Color.blue.opacity(0.8) : Color.gray.opacity(0.4))
                 .clipShape(.capsule)
         }
     }
     
     private func groupsChatButton() -> some View{
         Button{
-            
+            withAnimation(.easeInOut) {
+                whichType = .groups
+            }
         }label: {
             Text("Groups")
                 .font(.callout)
-                .foregroundStyle(.whatsAppBlack)
+                .foregroundStyle(whichType == .groups ? .white : .whatsAppBlack)
                 .padding(.horizontal,12)
                 .padding(.vertical,5)
-                .background(Color.gray.opacity(0.4))
+                .background(whichType == .groups ? Color.blue.opacity(0.8) : Color.gray.opacity(0.4))
                 .clipShape(.capsule)
         }
     }
+    
+    private func handleType(_ type : type) -> [ChatItem] {
+        switch type {
+        case .all:
+            return viewModel.channels
+        case .groups:
+            return viewModel.channels.filter {$0.membersCount > 2}
+        case .unread:
+            // i have to check it when i will implement the logic of unread chats, currently it is returning nothing
+            return []
+        }
+    }
+}
+
+enum type {
+    case all
+    case groups
+    case unread
 }
 
 extension ChatsTabScreen {

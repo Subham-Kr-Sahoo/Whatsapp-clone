@@ -240,7 +240,7 @@ final class ChatRoomViewModel : ObservableObject {
         $photoPickerItems.sink { [weak self] photos in
             guard let self = self else {return}
             // just to adjust the duplicate but have to find a logical logic 
-//            self.mediaAttachments.removeAll()
+            // self.mediaAttachments.removeAll()
             let audioRecordings = mediaAttachments.filter({ $0.type == .audio(.stubUrl,.stubTimeInterval) })
             self.mediaAttachments = audioRecordings
             Task{
