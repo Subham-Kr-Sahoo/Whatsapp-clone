@@ -130,6 +130,10 @@ extension MessageListController : UITableViewDelegate , UITableViewDataSource {
             else {return}
             let text = message.text
             viewModel.showImagePreview(photo, text)
+        case .audio:
+            guard let audioUrlString = message.audioUrl,
+                  let audioUrl = URL(string: audioUrlString) else {return}
+            viewModel.showMediaPlayer(audioUrl)
         default:
             break
         }
