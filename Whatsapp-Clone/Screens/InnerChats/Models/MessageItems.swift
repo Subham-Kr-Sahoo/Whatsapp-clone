@@ -24,6 +24,8 @@ struct MessageItems : Identifiable {
     var thumbNailHeight : CGFloat?
     var thumbNailWidth: CGFloat?
     var videoUrl : String?
+    var audioUrl : String?
+    var audioDuration : TimeInterval?
     static let sentplaceholder = MessageItems(id:UUID().uuidString, groupChat: true,text: "HOLY MOLY",ownerUid: "1", type: .text,timeStamp: Date(), thumbNailUrl: nil)
     static let receiveplaceholder = MessageItems(id:UUID().uuidString, groupChat: false,text: "HOLY MOLY received",ownerUid: "2", type: .text,timeStamp: Date(), thumbNailUrl: nil)
     var alignment : Alignment {
@@ -77,9 +79,11 @@ extension MessageItems {
         let timeInterval = dict[.timeStamp] as? TimeInterval ?? 0
         self.timeStamp = Date(timeIntervalSince1970: timeInterval)
         self.thumbNailUrl = dict[.thumbNailUrl] as? String ?? nil
-        self.thumbNailWidth = dict[.thumbNailWidth] as? CGFloat ?? 0
-        self.thumbNailHeight = dict[.thumbNailHeight] as? CGFloat ?? 0
+        self.thumbNailWidth = dict[.thumbNailWidth] as? CGFloat ?? nil
+        self.thumbNailHeight = dict[.thumbNailHeight] as? CGFloat ?? nil
         self.videoUrl = dict[.videoUrl] as? String ?? nil
+        self.audioUrl = dict[.audioUrl] as? String ?? nil
+        self.audioDuration = dict[.audioDuration] as? TimeInterval ?? nil
     }
 }
 
@@ -91,4 +95,6 @@ extension String {
     static let thumbNailWidth = "thumbNailWidth"
     static let thumbNailHeight = "thumbNailHeight"
     static let videoUrl = "videoUrl"
+    static let audioUrl = "audioUrl"
+    static let audioDuration = "audioDuration"
 }
