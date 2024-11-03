@@ -40,6 +40,7 @@ final class AudioRecorderService {
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
+        generateHapticFeedback()
         // if all good then do all this
         do{
             audioRecorder = try AVAudioRecorder(url: audioFileURL, settings: settings)
@@ -60,6 +61,7 @@ final class AudioRecorderService {
         isRecording = false
         timer?.cancel()
         elapsedTime = 0
+        generateHapticFeedback()
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setActive(false)
@@ -100,5 +102,11 @@ final class AudioRecorderService {
             guard let startTime = self?.startTime else {return}
             self?.elapsedTime = Date().timeIntervalSince(startTime)
         })
+    }
+    
+    private func generateHapticFeedback() {
+        let systemSoundId : SystemSoundID = 1118
+        AudioServicesPlaySystemSound(systemSoundId)
+        Haptics.impact(.medium)
     }
 }

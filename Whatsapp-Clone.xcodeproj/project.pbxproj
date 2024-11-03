@@ -18,6 +18,8 @@
 		910A2DDA2C979B7100C3EACA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DD92C979B7000C3EACA /* MainTabView.swift */; };
 		910A2DDC2C982A2600C3EACA /* UpdatesTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A2DDB2C982A2600C3EACA /* UpdatesTabScreen.swift */; };
 		910C5B7C2CB850B50097D8F1 /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910C5B7B2CB850B50097D8F1 /* ImagePreviewView.swift */; };
+		910D03282CD1881E00965E1A /* VoiceMessagePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D03272CD1881600965E1A /* VoiceMessagePlayer.swift */; };
+		910D032A2CD82D6200965E1A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D03292CD82D6200965E1A /* Haptics.swift */; };
 		9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9602C983D95004531F8 /* CallTabScreen.swift */; };
 		9142F96E2C984D48004531F8 /* CommunityTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */; };
 		9142F9712C989ED4004531F8 /* ChatsTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9702C989ED4004531F8 /* ChatsTabScreen.swift */; };
@@ -93,6 +95,8 @@
 		910A2DD92C979B7000C3EACA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		910A2DDB2C982A2600C3EACA /* UpdatesTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTabScreen.swift; sourceTree = "<group>"; };
 		910C5B7B2CB850B50097D8F1 /* ImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
+		910D03272CD1881600965E1A /* VoiceMessagePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMessagePlayer.swift; sourceTree = "<group>"; };
+		910D03292CD82D6200965E1A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		9142F9602C983D95004531F8 /* CallTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTabScreen.swift; sourceTree = "<group>"; };
 		9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTabScreen.swift; sourceTree = "<group>"; };
 		9142F9702C989ED4004531F8 /* ChatsTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTabScreen.swift; sourceTree = "<group>"; };
@@ -376,6 +380,7 @@
 			children = (
 				9142F9902C9A2EAE004531F8 /* CustomModifiers.swift */,
 				9176D8902CB582820034C9FE /* FirebaseHelper.swift */,
+				910D03292CD82D6200965E1A /* Haptics.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 		917560332CA9CFC800C0187E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				910D03272CD1881600965E1A /* VoiceMessagePlayer.swift */,
 				917560342CA9D00800C0187E /* ChatRoomViewModel.swift */,
 			);
 			path = ViewModel;
@@ -588,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				910D032A2CD82D6200965E1A /* Haptics.swift in Sources */,
 				9176D8912CB582820034C9FE /* FirebaseHelper.swift in Sources */,
 				910A2DDC2C982A2600C3EACA /* UpdatesTabScreen.swift in Sources */,
 				9152A3182C9E2C2900B778AA /* AuthScreenModel.swift in Sources */,
@@ -631,6 +638,7 @@
 				91FDF56B2CAB57AD001DE2AF /* Date+Extension.swift in Sources */,
 				91FDF54C2CAA0DD5001DE2AF /* ChannelCreationTextView.swift in Sources */,
 				9142F9872C99F9DB004531F8 /* MessageListView.swift in Sources */,
+				910D03282CD1881E00965E1A /* VoiceMessagePlayer.swift in Sources */,
 				9142F9812C99D527004531F8 /* ChatRoomScreen.swift in Sources */,
 				9152A3112C9DEFD800B778AA /* AuthTextField.swift in Sources */,
 				9142F98C2C9A2CC6004531F8 /* BubbleTextView.swift in Sources */,
