@@ -208,6 +208,7 @@ final class ChatRoomViewModel : ObservableObject {
     private func getMessage(){
         MessageService.getMessage(for: chat) { [weak self] messages in
             self?.messages = messages
+            self?.scrollToBottom(isAnimated: false)
         }
     }
     
