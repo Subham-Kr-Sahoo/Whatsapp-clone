@@ -16,7 +16,8 @@ struct BubbleAudioView: View {
     @State private var sliderValue : Double = 0
     @State private var sliderRange : ClosedRange<Double> = 0...20
     @State private var isDraggingSlider : Bool = false
-    
+    private let playBackSpeeds : [Float] = [1.0,1.5,2.0,0.5]
+    @State private var currentIndex = 0
     private var isCorrectVoiceMessage : Bool {
         return voiceMessagePlayer.currentUrl?.absoluteString == item.audioUrl
     }
@@ -34,6 +35,7 @@ struct BubbleAudioView: View {
             }
             VStack(alignment:item.horizontalAlignment,spacing: 3){
                 HStack{
+                    speedButton()
                     playButton()
                     Slider(value: $sliderValue,in: sliderRange){ editing in
                         isDraggingSlider = editing
@@ -70,6 +72,24 @@ struct BubbleAudioView: View {
                 guard voiceMessagePlayer.currentUrl?.absoluteString == item.audioUrl else { return }
                 listen(to: currentTime)
             }
+            .onChange(of: currentIndex) {
+                voiceMessagePlayer.changeSpeed(to: playBackSpeeds[currentIndex])
+            }
+        }
+        .padding(.horizontal, 10)
+        .padding(.leading,item.leadingPaddings)
+        .padding(.trailing,item.trailingPaddings-10)
+    }
+    
+    private func speedButton() -> some View {
+        Button{
+            currentIndex = (currentIndex+1) % playBackSpeeds.count
+        }label: {
+            Text("\(playBackSpeeds[currentIndex])"+"X")
+                .padding(2)
+                .padding(.horizontal,6)
+                .background(Color(.systemGray6).opacity(0.8))
+                .clipShape(Capsule())
         }
     }
     private func playButton() -> some View {
@@ -86,7 +106,7 @@ struct BubbleAudioView: View {
     }
     private func timeStampView() -> some View {
         HStack {
-            Text("3:25 AM")
+            Text(item.timeStamp.formatToTime)
                 .font(.system(size: 13))
                 .foregroundStyle(.gray)
             

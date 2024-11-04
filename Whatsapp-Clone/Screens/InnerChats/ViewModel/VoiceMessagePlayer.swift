@@ -14,6 +14,7 @@ final class VoiceMessagePlayer : ObservableObject {
     private var playerItem: AVPlayerItem?
     @Published private(set) var playState = playBackState.stopped
     @Published private(set) var currentTime = CMTime.zero
+    @Published private(set) var speed : Float = 1.0
     private var currentTimeObserver : Any?
     
     deinit {
@@ -31,6 +32,7 @@ final class VoiceMessagePlayer : ObservableObject {
             let playerItem = AVPlayerItem(url: url)
             self.playerItem = playerItem
             player = AVPlayer(playerItem: playerItem)
+            player?.rate = speed
             player?.play()
             playState = .playing
             observeCurrentPlayerTime()
@@ -76,9 +78,15 @@ final class VoiceMessagePlayer : ObservableObject {
     // resuming the audio
     private func resumePlaying() {
         if playState == .paused || playState == .stopped {
+            player?.rate = speed
             player?.play()
             playState = .playing
         }
+    }
+    
+    func changeSpeed(to newSpeed: Float) {
+        speed = newSpeed
+        player?.rate = playState == .playing ? speed : 0 // Set rate if playing
     }
     
     // to remove all the observers
