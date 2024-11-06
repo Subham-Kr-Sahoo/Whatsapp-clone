@@ -21,6 +21,7 @@ struct ChatItem : Identifiable {
     var members : [UserItems]
     private var thumbNailUrL : String?
     let createdBy : String
+    let lastMessageType : MessageType
     
     var groupChannel : Bool {
         return membersCount > 2
@@ -64,7 +65,22 @@ struct ChatItem : Identifiable {
         return members.count == membersCount
     }
     
-    static let placeholder = ChatItem.init(id: "1", lastMessage: "Hello World", creationDate: Date(), lastMessageTimeStamp: Date(), membersCount: 2, adminUids: [], memberUids: [], members: [],createdBy: "")
+    var previewMessage: String {
+        switch lastMessageType {
+        case .admin:
+            return " Newly Created Chat!"
+        case .text:
+            return lastMessage
+        case .photo:
+            return " Photo Message"
+        case .video:
+            return " Video Message"
+        case .audio:
+            return " Audio Message"
+        }
+    }
+    
+    static let placeholder = ChatItem.init(id: "1", lastMessage: "Hello World", creationDate: Date(), lastMessageTimeStamp: Date(), membersCount: 2, adminUids: [], memberUids: [], members: [],createdBy: "", lastMessageType: .text)
     
 }
 extension ChatItem {
@@ -82,6 +98,8 @@ extension ChatItem {
         self.members = dict[.members] as? [UserItems] ?? []
         self.thumbNailUrL = dict[.thumbNailUrl] as? String ?? nil
         self.createdBy = dict[.createdBy] as? String ?? ""
+        let messgeType = dict[.lastMessageType] as? String ?? "text"
+        self.lastMessageType = MessageType(messgeType) ?? .text
     }
 }
 extension String {

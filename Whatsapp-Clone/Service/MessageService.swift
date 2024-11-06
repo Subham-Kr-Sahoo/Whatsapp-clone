@@ -13,7 +13,8 @@ struct MessageService {
         guard let messageId = FirebaseConstants.messagesRef.childByAutoId().key else { return }
         let channelDict : [String:Any] = [
             .lastMessage : text,
-            .lastMessageTimeStamp : timeStamp
+            .lastMessageTimeStamp : timeStamp,
+            .lastMessageType : MessageType.text.title
         ]
         let messageDict : [String:Any] = [
             .text:text,

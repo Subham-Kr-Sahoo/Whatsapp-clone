@@ -34,10 +34,15 @@ struct ChatsItemView: View {
     }
     
     private func lastMessagePreview() -> some View{
-        Text(channel.lastMessage)
-            .font(.system(size: 16))
-            .lineLimit(1)
-            .foregroundStyle(.gray)
+        HStack(spacing:0){
+            Image(systemName: channel.lastMessageType.iconName)
+                .imageScale(.small)
+                .foregroundStyle(.gray)
+            Text(channel.previewMessage)
+                .font(.system(size: 16))
+                .lineLimit(1)
+                .foregroundStyle(.gray)
+        }
     }
 }
 

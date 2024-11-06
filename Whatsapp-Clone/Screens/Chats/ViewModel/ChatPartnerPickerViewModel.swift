@@ -173,6 +173,7 @@ final class ChatPartnerPickerViewModel : ObservableObject {
         var channelDict : [String:Any] = [
             .id:channelId,
             .lastMessage:newChannelBroadCast,
+            .lastMessageType:newChannelBroadCast,
             .creationDate:timeStamp,
             .lastMessageTimeStamp:timeStamp,
             .memberUids:membersUid,
