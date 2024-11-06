@@ -11,12 +11,15 @@ struct AdminMessageTextView: View {
     let chat : ChatItem
     // if somebody else made this group it doesnot shows the name of the user who created that group - fixed it
     var body: some View {
-        if chat.iscreatedByMe {
-            textView("You created this group. Tap to add members")
-        }else{
-            textView("\(chat.creatorName) created this group.")
-            textView("\(chat.creatorName) added you")
+        VStack{
+            if chat.iscreatedByMe {
+                textView("You created this group. Tap to add members")
+            }else{
+                textView("\(chat.creatorName) created this group.")
+                textView("\(chat.creatorName) added you")
+            }
         }
+        .frame(maxWidth: .infinity)
     }
     private func textView(_ text:String) -> some View {
         Text(text)

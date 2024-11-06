@@ -35,6 +35,12 @@ final class MessageListController : UIViewController {
     private var subscriptions = Set<AnyCancellable>()
     private let cellIdentifier = "MessageListControllerCells"
     
+    private lazy var pullToRefresh: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector (refreshData), for: .valueChanged)
+        return refreshControl
+    }()
+    
     private let compositionalLayout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
         var config = UICollectionLayoutListConfiguration(appearance: .plain)
         config.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
@@ -55,6 +61,7 @@ final class MessageListController : UIViewController {
         collectionView.keyboardDismissMode = .onDrag
         collectionView.backgroundColor = .clear
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.refreshControl = pullToRefresh
         return collectionView
     }()
     
@@ -95,6 +102,10 @@ final class MessageListController : UIViewController {
                 }
             }.store(in: &subscriptions)
     }
+    
+    @objc private func refreshData(){
+        messageCollectionView.refreshControl?.endRefreshing()
+    }
 }
 
 extension MessageListController : UICollectionViewDelegate , UICollectionViewDataSource {
@@ -102,25 +113,9 @@ extension MessageListController : UICollectionViewDelegate , UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         cell.backgroundColor = .clear
         let message = viewModel.messages[indexPath.item]
+        let isNewDay = viewModel.isNewDay(for: message, at: indexPath.item)
         cell.contentConfiguration = UIHostingConfiguration {
-            switch message.type {
-            case .text :
-                BubbleTextView(item: message)
-            case .photo,.video :
-                BubbleImageView(item: message)
-            case .audio :
-                BubbleAudioView(item : message)
-            case .admin(let type):
-                switch type {
-                case .channelCreation:
-                    ChannelCreationTextView()
-                    if viewModel.chat.groupChannel{
-                        AdminMessageTextView(chat: viewModel.chat)
-                    }
-                default:
-                    Text("")
-                }
-            }
+            BubbleView(message: message, chat: viewModel.chat, isNewDay: isNewDay)
         }
         return cell
     }

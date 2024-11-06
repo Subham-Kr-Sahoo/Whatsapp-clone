@@ -20,6 +20,7 @@
 		910C5B7C2CB850B50097D8F1 /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910C5B7B2CB850B50097D8F1 /* ImagePreviewView.swift */; };
 		910D03282CD1881E00965E1A /* VoiceMessagePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D03272CD1881600965E1A /* VoiceMessagePlayer.swift */; };
 		910D032A2CD82D6200965E1A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D03292CD82D6200965E1A /* Haptics.swift */; };
+		91318E412CDC2100001D41B1 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91318E402CDC2100001D41B1 /* BubbleView.swift */; };
 		9142F9612C983D95004531F8 /* CallTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9602C983D95004531F8 /* CallTabScreen.swift */; };
 		9142F96E2C984D48004531F8 /* CommunityTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */; };
 		9142F9712C989ED4004531F8 /* ChatsTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142F9702C989ED4004531F8 /* ChatsTabScreen.swift */; };
@@ -97,6 +98,7 @@
 		910C5B7B2CB850B50097D8F1 /* ImagePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
 		910D03272CD1881600965E1A /* VoiceMessagePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMessagePlayer.swift; sourceTree = "<group>"; };
 		910D03292CD82D6200965E1A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		91318E402CDC2100001D41B1 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		9142F9602C983D95004531F8 /* CallTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTabScreen.swift; sourceTree = "<group>"; };
 		9142F96D2C984D48004531F8 /* CommunityTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTabScreen.swift; sourceTree = "<group>"; };
 		9142F9702C989ED4004531F8 /* ChatsTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTabScreen.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				9142F98D2C9A2D40004531F8 /* BubbleTailView.swift */,
 				91FDF54B2CAA0DD5001DE2AF /* ChannelCreationTextView.swift */,
 				91FDF5622CAA2B12001DE2AF /* AdminMessageTextView.swift */,
+				91318E402CDC2100001D41B1 /* BubbleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				910884F32CB083E60015B77B /* PhotoPickerItem+Extension.swift in Sources */,
 				9176D88A2CB495CA0034C9FE /* AudioRecorderService.swift in Sources */,
 				91FDF5692CAB4EBE001DE2AF /* CircularProfileImageView.swift in Sources */,
+				91318E412CDC2100001D41B1 /* BubbleView.swift in Sources */,
 				9152A3292C9F138600B778AA /* FirebaseConstants.swift in Sources */,
 				9152A32D2C9F286D00B778AA /* ChatOptionsFromContactsView.swift in Sources */,
 				917560352CA9D00800C0187E /* ChatRoomViewModel.swift in Sources */,
