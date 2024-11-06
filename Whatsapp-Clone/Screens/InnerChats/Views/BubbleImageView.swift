@@ -66,6 +66,7 @@ struct BubbleImageView: View {
             if !item.text.isEmptyOrWhiteSpace {
                 Text(item.text)
                     .padding([.horizontal,.bottom],8)
+                    .padding(.top,-5)
                     .frame(maxWidth: .infinity,alignment: .leading)
                     .frame(width:item.imageSize.width)
             }
