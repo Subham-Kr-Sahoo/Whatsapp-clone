@@ -32,6 +32,8 @@ struct BubbleAudioView: View {
         HStack(alignment:.bottom){
             if item.showGroupPartnerInfo {
                 CircularProfileImageView(item.sender?.profileImageUrl, size: .mini)
+                    .padding(.leading,-22)
+                    .padding(.bottom,20)
             }
             VStack(alignment:item.horizontalAlignment,spacing: 3){
                 HStack{

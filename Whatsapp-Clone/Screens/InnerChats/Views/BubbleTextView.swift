@@ -21,11 +21,11 @@ struct BubbleTextView: View {
                     .background(item.backgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     .applyTail(item.direction)
-                    .shadow(color: Color(.systemGray3).opacity(0.1), radius: 5,x: 0,y: 20)
-                    .frame(maxWidth: .infinity,alignment: item.alignment)
-                    .padding(.leading,item.leadingPaddings)
-                    .padding(.trailing,item.trailingPaddings)
             }
+            .shadow(color: Color(.systemGray3).opacity(0.1), radius: 5,x: 0,y: 20)
+            .frame(maxWidth: .infinity,alignment: item.alignment)
+            .padding(.leading,item.leadingPaddings)
+            .padding(.trailing,item.trailingPaddings-10)
             timeStampTextView()
                 .padding(.leading,item.showGroupPartnerInfo ? 30 : 0)
         }
