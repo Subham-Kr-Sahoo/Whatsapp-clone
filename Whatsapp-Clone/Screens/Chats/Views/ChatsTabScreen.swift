@@ -15,6 +15,17 @@ struct ChatsTabScreen: View {
     init(_ currentUser: UserItems){
         self._viewModel = StateObject(wrappedValue: ChatTabViewModel(currentUser))
     }
+    var users : [ChatItem] {
+        if searchText.isEmpty {
+            return handleType(whichType)
+        }
+        else {
+            let filteredUsers = handleType(whichType).filter { user in
+                user.channelName.lowercased().hasPrefix(searchText.lowercased())
+            }
+            return filteredUsers
+        }
+    }
     @State private var whichType : type = .all
     var body: some View {
         NavigationStack{
@@ -26,7 +37,7 @@ struct ChatsTabScreen: View {
             }.padding(.leading)
             List{
                 archivedButton()
-                ForEach(handleType(whichType)){channel in
+                ForEach(users){channel in
                     NavigationLink{
                         ChatRoomScreen(channel: channel)
                     } label: {

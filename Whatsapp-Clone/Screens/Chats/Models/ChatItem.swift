@@ -80,6 +80,15 @@ struct ChatItem : Identifiable {
         }
     }
     
+    var channelName : String {
+        if groupChannel {
+            return name ?? ""
+        }
+        else{
+            return membersExcludeingMe.first?.username ?? ""
+        }
+    }
+    
     static let placeholder = ChatItem.init(id: "1", lastMessage: "Hello World", creationDate: Date(), lastMessageTimeStamp: Date(), membersCount: 2, adminUids: [], memberUids: [], members: [],createdBy: "", lastMessageType: .text)
     
 }
