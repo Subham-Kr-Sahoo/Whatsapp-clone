@@ -29,6 +29,7 @@ final class ChatPartnerPickerViewModel : ObservableObject {
     @Published var selectedChatPartner = [UserItems]()
     @Published private(set) var users = Set<UserItems>()
     @Published var errorState : (showError: Bool, errorMessage: String) = (false,"Error")
+    @Published var searchText : String = ""
     private var lastCursor : String?
     private var subscription: AnyCancellable?
     private var currentUser : UserItems?
@@ -65,13 +66,23 @@ final class ChatPartnerPickerViewModel : ObservableObject {
         }
     }
     
+    func clearUsers() {
+        users.removeAll()
+        lastCursor = nil
+    }
+    
     func fetchUsers() async {
         do{
-            let userNode = try await UserService.paginateUsers(lastCursor: lastCursor, pageSize: 10)
+            let userNode = try await UserService.paginateUsers(lastCursor: lastCursor, pageSize: 20)
             // here the users page is constantly fetching the duplicates , i dont know why may be some where users from groupMember arrays are mixing in it or something else is happening , i have to give it time to check it
             var fetchedUsers = userNode.users
             guard let currentUid = Auth.auth().currentUser?.uid else {return}
             fetchedUsers = fetchedUsers.filter {$0.uid != currentUid} // isme kya ho rha he kie : user khud ko dekh paa rha tha group add member me lekin woh nhi hona chaiye so yeh logic usko bachata he
+            if !searchText.isEmpty {
+                fetchedUsers = fetchedUsers.filter({ user in
+                    return user.username.lowercased().contains(searchText.lowercased())
+                })
+            }
             for fetchedUser in fetchedUsers {
                 self.users.insert(fetchedUser) //fetchedUsers mujhe ek array de rha he so me kya kar rha hu kie array ko traverse then push it into set , so duplicates are get removed 
             }

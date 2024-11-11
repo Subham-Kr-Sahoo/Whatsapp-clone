@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddMemberstoGroupChat: View {
-    @State private var searchText = ""
     @ObservedObject var viewModel : ChatPartnerPickerViewModel
     var body: some View {
         List{
@@ -26,7 +25,7 @@ struct AddMemberstoGroupChat: View {
                     }
                 }
             }
-            if viewModel.isPaginateable{
+            if viewModel.isPaginateable && viewModel.searchText.isEmpty{
                 loadMoreUsers()
             }
         }
@@ -34,10 +33,16 @@ struct AddMemberstoGroupChat: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .animation(.easeInOut, value: viewModel.showSelectedUser)
-        .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .always),prompt: "Search Name or Number")
+        .searchable(text: $viewModel.searchText,placement: .navigationBarDrawer(displayMode: .always),prompt: "Search Name or Number")
         .toolbar {
             titleView()
             trailingNavItem()
+        }
+        .onChange(of: viewModel.searchText) {
+            Task{
+                viewModel.clearUsers()
+                await viewModel.fetchUsers()
+            }
         }
     }
     private func groupChatPartner(_ user : UserItems) -> some View {

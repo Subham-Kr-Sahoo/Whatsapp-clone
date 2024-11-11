@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NewMemberAddScreen: View {
-    @State private var searchText = ""
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = ChatPartnerPickerViewModel()
     var onCreate: (_ newChannel : ChatItem) -> Void
@@ -33,12 +32,12 @@ struct NewMemberAddScreen: View {
                         .textCase(nil)
                         .bold()
                 }
-                if viewModel.isPaginateable {
+                if viewModel.isPaginateable && viewModel.searchText.isEmpty {
                     loadMoreUsers()
                 }
             }
             .padding(.top,-20)
-            .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .always),prompt: "Search Name or Number")
+            .searchable(text: $viewModel.searchText ,placement: .navigationBarDrawer(displayMode: .always),prompt: "Search Name or Number")
             .navigationTitle("New Chat")
             .navigationDestination(for: chatCreationRoute.self, destination: { Route in
                 destinationView(for: Route)
@@ -57,8 +56,15 @@ struct NewMemberAddScreen: View {
             .onAppear{
                 viewModel.deselectAllChatPartners()
             }
+            .onChange(of: viewModel.searchText) {
+                Task{
+                    viewModel.clearUsers()
+                    await viewModel.fetchUsers()
+                }
+            }
         }
     }
+    
     private func loadMoreUsers() -> some View {
         ProgressView()
             .frame(maxWidth: .infinity)
